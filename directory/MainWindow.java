@@ -13,7 +13,7 @@ public class MainWindow extends Application {
     // 4 Scenes to show 4 different displays.
     private Scene welcomeScene, mapScene, statsScene, challengeScene;
 
-    public MainWindow(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -26,13 +26,16 @@ public class MainWindow extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
+        window.setTitle("Property-Properly");
         // create each Scene with its own class.
-        welcomeScene = new WelcomeScene();
-        mapScene = new MapScene();
-        statsScene = new StatsScene();
-        challengeScene = new ChallengeScene();
+        welcomeScene = new WelcomeScene().getScene();
+        mapScene = new MapScene().createScene();
+        statsScene = new StatsScene().createScene();
+        challengeScene = new ChallengeScene().createScene();
         // the user opens onto the welcome scene.
         setWelcomeScene();
+        window.setWidth(800);
+        window.setHeight(400);
         // show the scene
         window.show();
     }
