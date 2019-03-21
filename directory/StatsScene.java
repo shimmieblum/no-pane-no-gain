@@ -5,12 +5,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
- * creates a scene which is the welcome scene of the application. It displays instructions
- * for use, the logo of the app and a means to input a price range.
+ * creates a scene which is the statistic scene of the application. It displays different statistics about the data.
  */
-public class WelcomeScene {
-    private Scene welcomeScene;
+public class StatsScene {
+    private Scene statsScene;
     // the properties
     private Listings listings;
     // the root of the Scene
@@ -21,14 +25,27 @@ public class WelcomeScene {
     private Label priceDetails,priceRangeLabel;
     // buttons
     private Button submit;
-    // the users price range.
-    private PriceRange range;
+    // the object containing all statistics
+    private Map<String, Object> allStats;
+    // the currently displayes statistics - always 4
+    private Map<String, Object> usedStats;
+    //the currently unused statistics - always 4
+    private Map<String, Object> unusedStats;
 
 
-    public WelcomeScene(Listings l){
+    public StatsScene(Listings l){
+        usedStats = new HashMap<String, Object>();
+        unusedStats = new HashMap<String, Object>();
+
         listings = l;
-        range = new PriceRange();
         createScene();
+        Statistics s  = new Statistics(listings);
+        allStats = s.getStats();
+        for(int i = 0; i<4; i++ ) {
+            //assign 4 to each stat group
+        }
+
+
     }
 
     /**
@@ -37,7 +54,7 @@ public class WelcomeScene {
     public void createScene() {
         root = new BorderPane();
         addTopPane();
-        welcomeScene = new Scene(root, 300,300);
+        statsScene = new Scene(root, 300,300);
     }
 
     /**

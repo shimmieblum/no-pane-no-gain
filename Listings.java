@@ -24,6 +24,7 @@ public class Listings
      */
     public Listings()
     {
+        dataLoader = new AirbnbDataLoader();
         properties = dataLoader.load();
     }
 
