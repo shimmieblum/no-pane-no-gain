@@ -11,6 +11,8 @@ import javafx.scene.text.Font;
  */
 public class WelcomeScene {
     private Scene welcomeScene;
+    // the properties
+    private Listings listings;
     // the root of the Scene
     private BorderPane root;
     // number text fields
@@ -23,7 +25,8 @@ public class WelcomeScene {
     private PriceRange range;
 
 
-    public WelcomeScene(){
+    public WelcomeScene(Listings l){
+        listings = l;
         range = new PriceRange();
         createScene();
     }
