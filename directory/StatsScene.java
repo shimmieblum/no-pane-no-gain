@@ -15,23 +15,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * creates a scene which is the statistic scene of the application. It displays different statistics about the data.
+ * Creates a scene which is the statistic scene of the application. It displays different statistics about the data.
+ *
+ * @Author Judith Offenberg
  */
+
 public class StatsScene {
     private Scene statsScene;
     // the properties
     private Listings listings;
     // the root of the Scene
     private BorderPane root;
-    // number text fields
-    private NumberTextField minField, maxField;
-    // labels used
-    private Label priceDetails,priceRangeLabel;
-    // buttons
-    private Button submit;
     // the object containing all statistics
     private Statistics stats;
 
+    
     public StatsScene(Listings l){
         listings = l;
         stats  = new Statistics(listings);
@@ -40,7 +38,7 @@ public class StatsScene {
     }
 
     /**
-     * set up the welcome scene.
+     * Set up the statistics scene using a Borderlayout. Top and bottom are configured in the superclass.
      */
     public void createScene() {
         root = new BorderPane();
@@ -80,45 +78,4 @@ public class StatsScene {
         return statsScene;
     }
 
-
-
-
-    /**
-     * Inner class to limit the a textField to accept only numbers.
-     */
-    public class NumberTextField extends TextField
-    {
-        /**
-         * only allow new text to be input if the text is valid. ie only a sequence of numbers.
-         */
-        @Override
-        public void replaceText(int start, int end, String text)
-        {
-            if (validate(text))
-            {
-                super.replaceText(start, end, text);
-            }
-        }
-
-        /**
-         * only allow new text to be input if the text is valid. ie only a sequence of numbers.
-         */
-        @Override
-        public void replaceSelection(String text)
-        {
-            if (validate(text))
-            {
-                super.replaceSelection(text);
-            }
-        }
-
-        /**
-         * check a string is valid. ie only a sequence of numbers.
-         * @return true if it is valid, false if it isn't.
-         */
-        private boolean validate(String text)
-        {
-            return text.matches("[0-9]*");
-        }
-    }
 }
