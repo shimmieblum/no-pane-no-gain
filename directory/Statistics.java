@@ -5,6 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class computing all the calculations and storing them in the stats HashMap by name and figure.
+ * This class is used in StatPane and StatsScene.
+ * It consists of all the statistics in "stats" and then stores the keys of those displayed or undisplayed statistics
+ * in lists.
+ *
+ * @Author Judith Offenberg, Mi-kaela Marciales
+ */
+
 public class Statistics {
 
     private Listings listings;
@@ -57,7 +66,8 @@ public class Statistics {
     public void numberHomeApartments() {
         int totalHomeApartments = 0;
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getRoom_type().equals("Entire Home") || listings.getProperty(i).getRoom_type().equals("apt")) {
+            if (listings.getProperty(i).getRoom_type().equals("Entire Home")
+                    || listings.getProperty(i).getRoom_type().equals("apt")) {
                 totalHomeApartments++;
             }
         }
@@ -84,7 +94,7 @@ public class Statistics {
                 }
             }
             stats.put("Total Available Properties", listings.getProperty(i).getNeighbourhood()); //TODO can't be inside the loop (but also have u tested its functionality?)
-            //maybe create local data structure to store this instead? TODO same for other loop ones 
+            //maybe create local data structure to store this instead? TODO same for other loop ones
         }
     }
 
@@ -150,7 +160,8 @@ public class Statistics {
             stats.put("Least Expensive Property", listings.getProperty(i).getName()); //TODO can't be inside the loop (but also have u tested its functionality?)
         }
     }
-     /*
+
+    /*
         Returns all the statistics in one HashMap.
         @return the hashmap containing statistics.
      */
@@ -175,9 +186,10 @@ public class Statistics {
     public Pair<String, Object> nextStat(String currentStat) {
         Pair<String, Object> pair;
 
-        if(currentStat != null) unusedStats.add(currentStat); //adds the current statistic back into the unused list
+        if(currentStat != null) unusedStats.add(currentStat); //inserts the current statistic into back of unused list
 
-        String next = unusedStats.get(0);
+        String next = unusedStats.get(0); //gets the first unused stat
+        unusedStats.remove(next);
         usedStats.add(next); // adds the new statistic into the used list
         pair = new Pair<>(next, stats.get(next));
         return pair;
