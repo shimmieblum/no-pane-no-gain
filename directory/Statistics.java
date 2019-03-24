@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Hashtable;
+import java.util.Dictionary;
 
 /**
  * The class computing all the calculations and storing them in the stats HashMap by name and figure.
@@ -17,7 +19,6 @@ import java.util.Map;
 public class Statistics {
 
     private Listings listings;
-    private AirbnbListing currentListing;
     //all the statistics
     private Map<String, Object> stats;
 
@@ -41,7 +42,7 @@ public class Statistics {
         numberHomeApartments();
         mostExpensiveBorough();
         leastExpensiveBorough();
-        mostReviewedHost();
+        mostReviewedProperty();
         mostExpensiveProperty();
         leastExpensiveProperty();
     }
@@ -50,6 +51,7 @@ public class Statistics {
     public void averageReviewsPerProperty() {
         int totalReviews = 0;
         int avgNumberReviews = 0;
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             totalReviews += listings.getProperty(i).getNumberOfReviews();
         }
@@ -65,9 +67,9 @@ public class Statistics {
     // adds the number of entire homes and apartments to the stats HashMap
     public void numberHomeApartments() {
         int totalHomeApartments = 0;
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getRoom_type().equals("Entire Home")
-                    || listings.getProperty(i).getRoom_type().equals("apt")) {
+            if (listings.getProperty(i).getRoom_type().equals("Entire Home/apt")) {
                 totalHomeApartments++;
             }
         }
@@ -76,89 +78,114 @@ public class Statistics {
 
     // adds the String of the name of the most expensive borough to the stats HashMap
     public void mostExpensiveBorough() {
-        /* 1. find sum of all properties in each borough (taking into
-         * account minimum number of nights)
-         * 2. compare sums and find most expensive boroughs
-         */
         int boroughTotalPrice = 0;
         int largestTotalPrice = 0;
-        // find total price of properties in a borough
+        String mostExpensiveNeighbourhood = "";
+        Dictionary neighbourhood = new Hashtable();
+        Dictionary boroughTotal = new Hashtable();
+
+        // add to neighbourhood dictionary key (property borough) and value (property price)
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(currentListing.getNeighbourhood())) {
-                boroughTotalPrice += (currentListing.getMinimumNights()*currentListing.getPrice());
-            }
-            // find largest total price
-            for (int n = 0; n <= boroughTotalPrice; n++) {
-                if (n > largestTotalPrice) {
-                    largestTotalPrice = n;
+            neighbourhood.put(listings.getProperty(i).getNeighbourhood(), listings.getProperty(i).getPrice());
+        }
+        // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
+        // total minimum price to the borough's total price.
+        for (int i = 0; i < listings.numberOfProperties(); i++) {
+            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getNeighbourhood()))) {
+                boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
+                boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
+                // find largest total price
+                if(boroughTotalPrice > largestTotalPrice){
+                    largestTotalPrice = boroughTotalPrice;
+                    mostExpensiveNeighbourhood = boroughTotal.get(largestTotalPrice).toString();
                 }
             }
-            stats.put("Total Available Properties", listings.getProperty(i).getNeighbourhood()); //TODO can't be inside the loop (but also have u tested its functionality?)
-            //maybe create local data structure to store this instead? TODO same for other loop ones
         }
-    }
+        stats.put("Most Expensive Borough", mostExpensiveNeighbourhood);
+        }
 
     // adds the String of the name of the least expensive borough to the stats HashMap
     public void leastExpensiveBorough() {
         int boroughTotalPrice = 0;
         int smallestTotalPrice = 0;
-        // find total price of properties in a borough
+        String leastExpensiveNeighbourhood = "";
+        Dictionary neighbourhood = new Hashtable();
+        Dictionary boroughTotal = new Hashtable();
+
+        // add to neighbourhood dictionary key (property borough) and value (property price)
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(currentListing.getNeighbourhood())) {
-                boroughTotalPrice += (currentListing.getMinimumNights()*currentListing.getPrice());
-            }
-            // find smallest total price
-            for (int n = 0; n <= boroughTotalPrice; n++) {
-                if (n < smallestTotalPrice) {
-                    smallestTotalPrice = n;
+            neighbourhood.put(listings.getProperty(i).getNeighbourhood(), listings.getProperty(i).getPrice());
+        }
+        // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
+        // total minimum price to the borough's total price.
+        for (int i = 0; i < listings.numberOfProperties(); i++) {
+            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getNeighbourhood()))) {
+                boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
+                boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
+                // find smallest total price
+                if(boroughTotalPrice < smallestTotalPrice){
+                    smallestTotalPrice = boroughTotalPrice;
+                    leastExpensiveNeighbourhood = boroughTotal.get(smallestTotalPrice).toString();
                 }
             }
-            stats.put("Total Available Properties", listings.getProperty(i).getNeighbourhood()); //TODO can't be inside the loop (but also have u tested its functionality?)
         }
+        stats.put("Least Expensive Borough", leastExpensiveNeighbourhood);
     }
 
     // adds the String of the name of host with the most reviews to the stats HashMap
     // calculatedHostListingsCount in AirbnbListing returns the total number of listings the host holds across AirBnB
-    public void mostReviewedHost() {
+    public void mostReviewedProperty() {
         int greatestNumberOfReviews = 0;
+        String mostReviewedProperty = "";
+
+        Dictionary propertiesReviews = new Hashtable();
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            for (int n = 0; n <= listings.getProperty(i).getNumberOfReviews(); n++){
-                if (n > greatestNumberOfReviews) {
-                    greatestNumberOfReviews = n;
-                }
+            propertiesReviews.put(listings.getProperty(i).getNumberOfReviews(), listings.getProperty(i).getName());
+            if (listings.getProperty(i).getNumberOfReviews() > greatestNumberOfReviews) {
+                greatestNumberOfReviews = listings.getProperty(i).getNumberOfReviews();
+                mostReviewedProperty = propertiesReviews.get(greatestNumberOfReviews).toString();
             }
-            stats.put("Most Reviewed Host", listings.getProperty(i).getHost_name()); //TODO can't be inside the loop (but also have u tested its functionality?)
         }
+        stats.put("Most Reviewed Property", mostReviewedProperty);
+
     }
 
     // adds the String of the name of the most expensive property to the stats HashMap
     public void mostExpensiveProperty() {
-        int propertyTotalPrice = 0;
-        int mostExpensiveProperty = 0;
+        int propertyTotalPrice;
+        int mostCostlyProperty = 0;
+        String mostExpensiveProperty = "";
+        Dictionary propertiesPrices = new Hashtable();
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            propertyTotalPrice = (listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice());
-            for (int n = 0; n <= propertyTotalPrice; n++){
-                if (n > mostExpensiveProperty) {
-                    mostExpensiveProperty = n;
-                }
+            // check this
+            propertyTotalPrice = listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
+            propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            if (propertyTotalPrice > mostCostlyProperty) {
+                mostCostlyProperty = propertyTotalPrice;
+                mostExpensiveProperty = propertiesPrices.get(mostCostlyProperty).toString();
             }
-            stats.put("Most Expensive Property", listings.getProperty(i).getName()); //TODO can't be inside the loop (but also have u tested its functionality?)
         }
+        stats.put("Most Expensive Property", mostExpensiveProperty);
     }
 
     // adds the String of the name of the least expensive property to the stats HashMap
     public void leastExpensiveProperty() {
-        int propertyTotalPrice = 0;
-        int leastExpensiveProperty = 0;
+        int propertyTotalPrice;
+        int leastCostlyProperty = 0;
+        String leastExpensiveProperty = "";
+        Dictionary propertiesPrices = new Hashtable();
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            propertyTotalPrice = (listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice());
-            for (int n = 0; n <= propertyTotalPrice; n++){
-                if (n < leastExpensiveProperty) {
-                    leastExpensiveProperty = n;
-                }
+            // check this
+            propertyTotalPrice = listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
+            propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            if (propertyTotalPrice < leastCostlyProperty) {
+                leastCostlyProperty = propertyTotalPrice;
+                leastExpensiveProperty = propertiesPrices.get(leastCostlyProperty).toString();
             }
-            stats.put("Least Expensive Property", listings.getProperty(i).getName()); //TODO can't be inside the loop (but also have u tested its functionality?)
         }
+        stats.put("Most Expensive Property", leastExpensiveProperty);
     }
 
     /*
