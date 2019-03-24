@@ -1,7 +1,8 @@
-<<<<<<< HEAD
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 
 /**
  * this class simply extends the JavaFX Application class and allows for the creation of four
@@ -11,77 +12,6 @@ import javafx.stage.Stage;
 public class MainWindow extends Application {
     // the stage
     private Stage window;
-    // 4 Scenes to show 4 different displays.
-    private Scene welcomeScene, mapScene, statsScene, challengeScene;
-
-    public MainWindow(String[] args) {
-        launch(args);
-    }
-
-    /**
-     * start the Application off, this method is called on construction by the
-     * launch method in the constructor
-     * @param stage the stage.
-     * @throws Exception
-     */
-    @Override
-    public void start(Stage stage) throws Exception {
-        window = stage;
-        // create each Scene with its own class.
-        welcomeScene = new WelcomeScene();
-        mapScene = new MapScene();
-        statsScene = new StatsScene();
-        challengeScene = new ChallengeScene();
-        // the user opens onto the welcome scene.
-        setWelcomeScene();
-        // show the scene
-        window.show();
-    }
-
-    /**
-     * set scene to the welcome scene.
-     */
-    public void setWelcomeScene() {
-        window.setScene(welcomeScene);
-    }
-
-    /**
-     * set scene to the map scene
-     */
-    public void setMapScene(){
-        window.setScene(mapScene);
-    }
-
-    /**
-     * set the scene to the stats scene
-     */
-    public void setStatsScene(){
-        window.setScene(statsScene);
-    }
-
-    /**
-     * set the scene to the challenge scene.
-     */
-    public void setChallengeScene() {
-        window.setScene(challengeScene);
-    }
-
-}
-=======
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-/**
- * this class simply extends the JavaFX Application class and allows for the creation of four
- * separate scenes to be placed in the stage. These scenes are created in their own classes.
- *
- */
-public class MainWindow extends Application {
-    // the stage
-    private Stage window;
-    // 4 Scenes to show 4 different displays.
-    private Scene welcomeScene, mapScene, statsScene, challengeScene;
 
     public static void main(String[] args) {
         launch(args);
@@ -97,46 +27,44 @@ public class MainWindow extends Application {
     public void start(Stage stage) throws Exception {
         window = stage;
         window.setTitle("Property-Properly");
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            close();
+        });
         // create each Scene with its own class.
-        welcomeScene = new WelcomeScene().getScene();
-        mapScene = new MapScene().createScene();
-        statsScene = new StatsScene().createScene();
-        challengeScene = new ChallengeScene().createScene();
+        Scene welcomeScene = createSceneGenerators();
         // the user opens onto the welcome scene.
-        setWelcomeScene();
-        window.setWidth(800);
-        window.setHeight(400);
+        setScene(welcomeScene);
         // show the scene
         window.show();
     }
 
-    /**
-     * set scene to the welcome scene.
-     */
-    public void setWelcomeScene() {
-        window.setScene(welcomeScene);
+    private Scene createSceneGenerators() {
+        SceneGenerator welcomeScene, mapScene, statsScene, challengeScene;
+        welcomeScene = new WelcomeScene();
+        mapScene = new MapScene();
+        statsScene = new StatsScene();
+        challengeScene = new ChallengeScene();
+
+        welcomeScene.setSceneGenerators(mapScene, null);
+        mapScene.setSceneGenerators(null, welcomeScene);
+        return welcomeScene.getScene(window);
     }
 
     /**
-     * set scene to the map scene
+     * set scene to the a new scene scene.
      */
-    public void setMapScene(){
-        window.setScene(mapScene);
+    public void setScene(Scene scene) {
+        window.setScene(scene);
     }
 
-    /**
-     * set the scene to the stats scene
-     */
-    public void setStatsScene(){
-        window.setScene(statsScene);
+    private void close() {
+        boolean close = OptionsBox.createAlertBox("want to quit", "Do you really want to quit?");
+        if (close) {
+            window.close();
+        }
+
     }
 
-    /**
-     * set the scene to the challenge scene.
-     */
-    public void setChallengeScene() {
-        window.setScene(challengeScene);
-    }
 
 }
->>>>>>> Shimmie
