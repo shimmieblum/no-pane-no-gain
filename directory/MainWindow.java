@@ -20,6 +20,10 @@ public class MainWindow extends Application {
         launch(args);
     }
 
+    public MainWindow() {
+        listings = new Listings();
+    }
+
     /**
      * start the Application off, this method is called on construction by the
      * launch method in the constructor
@@ -45,14 +49,14 @@ public class MainWindow extends Application {
     }
 
     private Scene createSceneGenerators(Listings listings) {
-        SceneGenerator welcomeScene, mapScene, statsScene, challengeScene;
+        SceneGenerator welcomeScene,  statsScene ;
         welcomeScene = new WelcomeScene();
-        mapScene = new MapScene();
+        //mapScene = new MapScene();
         statsScene = new StatsScene(listings);
-        challengeScene = new ChallengeScene();
+        //challengeScene = new ChallengeScene();
 
-        welcomeScene.setSceneGenerators(mapScene, null);
-        mapScene.setSceneGenerators(null, welcomeScene);
+        welcomeScene.setSceneGenerators(statsScene, null);
+        statsScene.setSceneGenerators(null, welcomeScene);
         return welcomeScene.getScene(window);
     }
 

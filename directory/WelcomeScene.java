@@ -100,7 +100,7 @@ public class WelcomeScene extends SceneGenerator {
     public Pane centrePane() {
         GridPane pane = new GridPane();
 
-        ImageView view = new ImageView(new Image(getClass().getResourceAsStream("Property Properly Logo.png")));
+        ImageView view = new ImageView(new Image(getClass().getResourceAsStream("Untitled - Copy.png")));
 
         Button helpButton = new Button("Help");
         Button gameButton = new Button("Game");
