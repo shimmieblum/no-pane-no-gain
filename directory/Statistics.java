@@ -42,7 +42,7 @@ public class Statistics {
         numberHomeApartments();
         mostExpensiveBorough();
         leastExpensiveBorough();
-        mostReviewedProperty();
+        mostReviewedHost();
         mostExpensiveProperty();
         leastExpensiveProperty();
     }
@@ -86,12 +86,12 @@ public class Statistics {
 
         // add to neighbourhood dictionary key (property borough) and value (property price)
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            neighbourhood.put(listings.getProperty(i).getNeighbourhood(), listings.getProperty(i).getPrice());
+            neighbourhood.put(listings.getProperty(i).getName(), listings.getProperty(i).getNeighbourhood());
         }
         // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
         // total minimum price to the borough's total price.
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getNeighbourhood()))) {
+            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getName()))) {
                 boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
                 boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
                 // find largest total price
@@ -114,12 +114,12 @@ public class Statistics {
 
         // add to neighbourhood dictionary key (property borough) and value (property price)
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            neighbourhood.put(listings.getProperty(i).getNeighbourhood(), listings.getProperty(i).getPrice());
+            neighbourhood.put(listings.getProperty(i).getName(), listings.getProperty(i).getNeighbourhood());
         }
         // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
         // total minimum price to the borough's total price.
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getNeighbourhood()))) {
+            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getName()))) {
                 boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
                 boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
                 // find smallest total price
@@ -134,33 +134,42 @@ public class Statistics {
 
     // adds the String of the name of host with the most reviews to the stats HashMap
     // calculatedHostListingsCount in AirbnbListing returns the total number of listings the host holds across AirBnB
-    public void mostReviewedProperty() {
+    public void mostReviewedHost() {
+        int totalReviews = 0;
         int greatestNumberOfReviews = 0;
         String mostReviewedProperty = "";
-
+        Dictionary propHosts = new Hashtable();
         Dictionary propertiesReviews = new Hashtable();
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            propertiesReviews.put(listings.getProperty(i).getNumberOfReviews(), listings.getProperty(i).getName());
-            if (listings.getProperty(i).getNumberOfReviews() > greatestNumberOfReviews) {
-                greatestNumberOfReviews = listings.getProperty(i).getNumberOfReviews();
+            propHosts.put(listings.getProperty(i).getName(), listings.getProperty(i).getHost_name());
+            if (listings.getProperty(i).getHost_name().equals(propHosts.get(listings.getProperty(i).getName()))) {
+                totalReviews += listings.getProperty(i).getNumberOfReviews();
+                propertiesReviews.put(totalReviews, listings.getProperty(i).getHost_name());
+            }
+            if (totalReviews > greatestNumberOfReviews) {
+                greatestNumberOfReviews = totalReviews;
                 mostReviewedProperty = propertiesReviews.get(greatestNumberOfReviews).toString();
             }
         }
-        stats.put("Most Reviewed Property", mostReviewedProperty);
+        stats.put("Most Reviewed Host", mostReviewedProperty);
 
     }
 
     // adds the String of the name of the most expensive property to the stats HashMap
     public void mostExpensiveProperty() {
-        int propertyTotalPrice;
+        int propertyTotalPrice = 0;
         int mostCostlyProperty = 0;
         String mostExpensiveProperty = "";
+        Dictionary properties = new Hashtable();
         Dictionary propertiesPrices = new Hashtable();
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            // check this
-            propertyTotalPrice = listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
-            propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            properties.put(listings.getProperty(i).getPrice(), listings.getProperty(i).getName());
+            if (listings.getProperty(i).getName().equals(properties.get(listings.getProperty(i).getPrice()))) {
+                propertyTotalPrice = listings.getProperty(i).getMinimumNights() * listings.getProperty(i).getPrice();
+                propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            }
             if (propertyTotalPrice > mostCostlyProperty) {
                 mostCostlyProperty = propertyTotalPrice;
                 mostExpensiveProperty = propertiesPrices.get(mostCostlyProperty).toString();
@@ -171,15 +180,18 @@ public class Statistics {
 
     // adds the String of the name of the least expensive property to the stats HashMap
     public void leastExpensiveProperty() {
-        int propertyTotalPrice;
+        int propertyTotalPrice = 0;
         int leastCostlyProperty = 0;
         String leastExpensiveProperty = "";
+        Dictionary properties = new Hashtable();
         Dictionary propertiesPrices = new Hashtable();
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            // check this
-            propertyTotalPrice = listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
-            propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            properties.put(listings.getProperty(i).getPrice(), listings.getProperty(i).getName());
+            if (listings.getProperty(i).getName().equals(properties.get(listings.getProperty(i).getPrice()))) {
+                propertyTotalPrice = listings.getProperty(i).getMinimumNights() * listings.getProperty(i).getPrice();
+                propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
+            }
             if (propertyTotalPrice < leastCostlyProperty) {
                 leastCostlyProperty = propertyTotalPrice;
                 leastExpensiveProperty = propertiesPrices.get(leastCostlyProperty).toString();
