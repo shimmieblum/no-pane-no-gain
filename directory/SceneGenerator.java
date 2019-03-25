@@ -82,7 +82,7 @@ public abstract class SceneGenerator {
     public Pane bottomBar() {
 
         // create and size ImageViewer of logo
-        Image logo = new Image(getClass().getResourceAsStream("Property Properly logo.png"));
+        Image logo = new Image(getClass().getResourceAsStream("Untitled - Copy.png"));
         ImageView view = new ImageView(logo);
         view.setFitHeight(100);
         view.setFitWidth(130);
