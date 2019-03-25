@@ -20,7 +20,7 @@ public class Statistics {
 
     private Listings listings;
     //all the statistics
-    private Map<String, String> stats;
+    private HashMap<String, String> stats;
 
     // the keys of currently displayed statistics - always 4
     private List<String> usedStats;
@@ -72,7 +72,7 @@ public class Statistics {
         String homeApts = "";
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getRoom_type().equals("Entire Home/apt")) {
+            if (listings.getProperty(i).getRoom_type().equals("Entire home/apt")) {
                 totalHomeApartments++;
             }
         }
@@ -82,57 +82,46 @@ public class Statistics {
 
     // adds the String of the name of the most expensive borough to the stats HashMap
     public void mostExpensiveBorough() {
-        int boroughTotalPrice = 0;
-        int largestTotalPrice = 0;
         String mostExpensiveNeighbourhood = "";
-        Dictionary neighbourhood = new Hashtable();
-        Dictionary boroughTotal = new Hashtable();
+        HashMap<String, Integer> boroughTotal = new HashMap<>();
+        Pair<String, Integer> mostExp = new Pair<>("", 0);
 
-        // add to neighbourhood dictionary key (property borough) and value (property price)
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            neighbourhood.put(listings.getProperty(i).getName(), listings.getProperty(i).getNeighbourhood());
+           String borough = listings.getProperty(i).getNeighbourhood();
+           int price = listings.getProperty(i).getPrice();
+           if(boroughTotal.containsKey(borough)) price += boroughTotal.get(borough);
+           boroughTotal.put(borough, price);
         }
-        // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
-        // total minimum price to the borough's total price.
-        for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getName()))) {
-                boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
-                boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
-                // find largest total price
-                if(boroughTotalPrice > largestTotalPrice){
-                    largestTotalPrice = boroughTotalPrice;
-                    mostExpensiveNeighbourhood = boroughTotal.get(largestTotalPrice).toString();
-                }
-            }
+
+        for(String borough : boroughTotal.keySet()) {
+            int price = boroughTotal.get(borough);
+            if(price > mostExp.getValue()) mostExp = new Pair<>(borough, boroughTotal.get(borough));
         }
+        mostExpensiveNeighbourhood = mostExp.getKey();
+
         stats.put("Most Expensive Borough", mostExpensiveNeighbourhood);
-        }
+    }
 
     // adds the String of the name of the least expensive borough to the stats HashMap
     public void leastExpensiveBorough() {
-        int boroughTotalPrice = 0;
-        int smallestTotalPrice = 0;
         String leastExpensiveNeighbourhood = "";
-        Dictionary neighbourhood = new Hashtable();
-        Dictionary boroughTotal = new Hashtable();
+        HashMap<String, Integer> boroughTotal = new HashMap<>();
+        Pair<String, Integer> leastExp = new Pair<>("", 1000000);
 
-        // add to neighbourhood dictionary key (property borough) and value (property price)
+
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            neighbourhood.put(listings.getProperty(i).getName(), listings.getProperty(i).getNeighbourhood());
+            String borough = listings.getProperty(i).getNeighbourhood();
+            int price = listings.getProperty(i).getPrice();
+            if(boroughTotal.containsKey(borough)) price += boroughTotal.get(borough);
+            boroughTotal.put(borough, price);
         }
-        // if a specific property's borough is the same as the key in the neighbourhood dictionary, add the property's
-        // total minimum price to the borough's total price.
-        for (int i = 0; i < listings.numberOfProperties(); i++) {
-            if (listings.getProperty(i).getNeighbourhood().equals(neighbourhood.get(listings.getProperty(i).getName()))) {
-                boroughTotalPrice += listings.getProperty(i).getMinimumNights()*listings.getProperty(i).getPrice();
-                boroughTotal.put(boroughTotalPrice, listings.getProperty(i).getNeighbourhood());
-                // find smallest total price
-                if(boroughTotalPrice < smallestTotalPrice){
-                    smallestTotalPrice = boroughTotalPrice;
-                    leastExpensiveNeighbourhood = boroughTotal.get(smallestTotalPrice).toString();
-                }
-            }
+
+        for(String borough : boroughTotal.keySet()) {
+            int price = boroughTotal.get(borough);
+            if(price < leastExp.getValue()) leastExp = new Pair<>(borough, boroughTotal.get(borough));
         }
+        leastExpensiveNeighbourhood = leastExp.getKey();
+
         stats.put("Least Expensive Borough", leastExpensiveNeighbourhood);
     }
 
@@ -162,53 +151,40 @@ public class Statistics {
 
     // adds the String of the name of the most expensive property to the stats HashMap
     public void mostExpensiveProperty() {
-        int propertyTotalPrice = 0;
-        int mostCostlyProperty = 0;
         String mostExpensiveProperty = "";
-        Dictionary properties = new Hashtable();
-        Dictionary propertiesPrices = new Hashtable();
+        Pair<String, Integer> mostExp = new Pair<>("", 0);
 
-        for (int i = 0; i < listings.numberOfProperties(); i++) {
-            properties.put(listings.getProperty(i).getPrice(), listings.getProperty(i).getName());
-            if (listings.getProperty(i).getName().equals(properties.get(listings.getProperty(i).getPrice()))) {
-                propertyTotalPrice = listings.getProperty(i).getMinimumNights() * listings.getProperty(i).getPrice();
-                propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
-            }
-            if (propertyTotalPrice > mostCostlyProperty) {
-                mostCostlyProperty = propertyTotalPrice;
-                mostExpensiveProperty = propertiesPrices.get(mostCostlyProperty).toString();
-            }
+        for(int i = 0; i < listings.numberOfProperties(); i++) {
+            AirbnbListing property = listings.getProperty(i);
+            int totalPrice = property.getMinimumNights() * property.getPrice();
+            if(totalPrice > mostExp.getValue()) mostExp = new Pair<>(property.getName(), totalPrice);
         }
+        mostExpensiveProperty = mostExp.getKey();
+
+
         stats.put("Most Expensive Property", mostExpensiveProperty);
     }
 
     // adds the String of the name of the least expensive property to the stats HashMap
     public void leastExpensiveProperty() {
-        int propertyTotalPrice = 0;
-        int leastCostlyProperty = 0;
         String leastExpensiveProperty = "";
-        Dictionary properties = new Hashtable();
-        Dictionary propertiesPrices = new Hashtable();
+        Pair<String, Integer> leastExp = new Pair<>("", 10000000);
 
-        for (int i = 0; i < listings.numberOfProperties(); i++) {
-            properties.put(listings.getProperty(i).getPrice(), listings.getProperty(i).getName());
-            if (listings.getProperty(i).getName().equals(properties.get(listings.getProperty(i).getPrice()))) {
-                propertyTotalPrice = listings.getProperty(i).getMinimumNights() * listings.getProperty(i).getPrice();
-                propertiesPrices.put(propertyTotalPrice, listings.getProperty(i).getName());
-            }
-            if (propertyTotalPrice < leastCostlyProperty) {
-                leastCostlyProperty = propertyTotalPrice;
-                leastExpensiveProperty = propertiesPrices.get(leastCostlyProperty).toString();
-            }
+        for(int i = 0; i < listings.numberOfProperties(); i++) {
+            AirbnbListing property = listings.getProperty(i);
+            int totalPrice = property.getMinimumNights() * property.getPrice();
+            if(totalPrice < leastExp.getValue()) leastExp = new Pair<>(property.getName(), totalPrice);
         }
-        stats.put("Most Expensive Property", leastExpensiveProperty);
+        leastExpensiveProperty = leastExp.getKey();
+
+        stats.put("Least Expensive Property", leastExpensiveProperty);
     }
 
     /*
         Returns all the statistics in one HashMap.
         @return the hashmap containing statistics.
      */
-    public Map<String, String> getStats() { return stats; }
+    public HashMap<String, String> getStats() { return stats; }
 
     /*
         Divides the statistics into two groups, one of which is displayed and one which is waiting to be shown.
@@ -222,10 +198,10 @@ public class Statistics {
     /*
         Returns the next statistic to be displayed. It can be used to initialise a pane.
         @param currentStat the current statistic that needs to be changed. Null if there is no previous stat.
-        @return the new Pair of String and Object to be displayed on the screen.
+        @return the new Pair of String and String to be displayed on the screen.
     */
-    public Pair<String, Object> nextStat(String currentStat) {
-        Pair<String, Object> pair;
+    public Pair<String, String> nextStat(String currentStat) {
+        Pair<String, String> pair;
 
         if(currentStat != null) unusedStats.add(currentStat); //inserts the current statistic into back of unused list
 

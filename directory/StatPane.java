@@ -1,3 +1,4 @@
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -22,12 +23,14 @@ public class StatPane {
 
     public StatPane(Statistics s) {
         pane = new BorderPane();
+        pane.setPrefSize(250, 250);
+        pane.setPadding(new Insets(20,20,20,20));
 
         stats = s;
-        Pair<String, Object> pair = s.nextStat(null);
+        Pair<String, String> pair = s.nextStat(null);
 
         title = new Label(pair.getKey());
-        content = new Label(pair.getValue().toString());
+        content = new Label(pair.getValue());
         instantiateButtons();
 
         pane.setTop(title);
@@ -51,7 +54,7 @@ public class StatPane {
         Called when a button is pressed. This loads a new statistic into the current pane.
      */
     private void switchStatPane() {
-        Pair<String, Object> pair = stats.nextStat(title.getText());
+        Pair<String, String> pair = stats.nextStat(title.getText());
 
         title  = new Label(pair.getKey());
         content = new Label(pair.getValue().toString());

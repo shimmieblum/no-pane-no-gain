@@ -20,7 +20,7 @@ import java.util.Map;
  * @Author Judith Offenberg
  */
 
-public class StatsScene {
+public class StatsScene extends SceneGenerator {
     private Scene statsScene;
     // the properties
     private Listings listings;
@@ -29,7 +29,7 @@ public class StatsScene {
     // the object containing all statistics
     private Statistics stats;
 
-    
+
     public StatsScene(Listings l){
         listings = l;
         stats  = new Statistics(listings);
@@ -52,9 +52,10 @@ public class StatsScene {
      */
     private void addCenterPane() {
         FlowPane centerPane = new FlowPane();
-        centerPane.setPadding(new Insets(4,4,4,4));
+        centerPane.setPadding(new Insets(20,20,20,20));
         centerPane.setVgap(4);
         centerPane.setHgap(4);
+        centerPane.setPrefWrapLength(600);
 
         centerPane.getChildren().addAll(createPane(), createPane(),createPane(),createPane() );
         centerPane.setAlignment(Pos.CENTER);
@@ -65,17 +66,9 @@ public class StatsScene {
      * create BorderPane with  one statistic
      * @return the initial BorderPane with one statistic
      */
-    private BorderPane createPane() {
+    public Pane createPane() {
         BorderPane pane = new StatPane(stats).getPane();
         return pane;
-    }
-
-
-    /**
-     * @return the welcomeScene created by this Class
-     */
-    public Scene getScene() {
-        return statsScene;
     }
 
 }
