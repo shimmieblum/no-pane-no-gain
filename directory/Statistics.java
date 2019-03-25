@@ -20,7 +20,7 @@ public class Statistics {
 
     private Listings listings;
     //all the statistics
-    private Map<String, Object> stats;
+    private Map<String, String> stats;
 
     // the keys of currently displayed statistics - always 4
     private List<String> usedStats;
@@ -51,12 +51,14 @@ public class Statistics {
     public void averageReviewsPerProperty() {
         int totalReviews = 0;
         int avgNumberReviews = 0;
+        String avgReviews = "";
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             totalReviews += listings.getProperty(i).getNumberOfReviews();
         }
         avgNumberReviews = totalReviews/listings.numberOfProperties();
-        stats.put("Average Reviews Per Property", avgNumberReviews);
+        avgReviews = Integer.toString(avgNumberReviews);
+        stats.put("Average Reviews Per Property", avgReviews);
     }
 
     // adds the number of total available properties to the stats HashMap
@@ -67,13 +69,15 @@ public class Statistics {
     // adds the number of entire homes and apartments to the stats HashMap
     public void numberHomeApartments() {
         int totalHomeApartments = 0;
+        String homeApts = "";
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             if (listings.getProperty(i).getRoom_type().equals("Entire Home/apt")) {
                 totalHomeApartments++;
             }
         }
-        stats.put("Number of Entire Homes and Apartments", totalHomeApartments);
+        homeApts = Integer.toString(totalHomeApartments);
+        stats.put("Number of Entire Homes and Apartments", homeApts);
     }
 
     // adds the String of the name of the most expensive borough to the stats HashMap
@@ -204,7 +208,7 @@ public class Statistics {
         Returns all the statistics in one HashMap.
         @return the hashmap containing statistics.
      */
-    public Map<String, Object> getStats() {
+    public Map<String, String> getStats() {
         return stats;
     }
 
