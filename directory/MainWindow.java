@@ -3,17 +3,20 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 /**
  * this class simply extends the JavaFX Application class and allows for the creation of four
  * separate scenes to be placed in the stage. These scenes are created in their own classes.
  *
  */
 public class MainWindow extends Application {
+
+    // the properties
+    private Listings listings;
+
     // the stage
     private Stage window;
-
-    public static void main(String[] args) {
+    
+    public MainWindow(String[] args) {
         launch(args);
     }
 
@@ -25,6 +28,8 @@ public class MainWindow extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
+        listings = new Listings();
+
         window = stage;
         window.setTitle("Property-Properly");
         window.setOnCloseRequest(e -> {
@@ -32,18 +37,18 @@ public class MainWindow extends Application {
             close();
         });
         // create each Scene with its own class.
-        Scene welcomeScene = createSceneGenerators();
+        Scene welcomeScene = createSceneGenerators(listings);
         // the user opens onto the welcome scene.
         setScene(welcomeScene);
         // show the scene
         window.show();
     }
 
-    private Scene createSceneGenerators() {
+    private Scene createSceneGenerators(Listings listings) {
         SceneGenerator welcomeScene, mapScene, statsScene, challengeScene;
         welcomeScene = new WelcomeScene();
         mapScene = new MapScene();
-        statsScene = new StatsScene();
+        statsScene = new StatsScene(listings);
         challengeScene = new ChallengeScene();
 
         welcomeScene.setSceneGenerators(mapScene, null);
