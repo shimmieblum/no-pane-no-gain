@@ -1,56 +1,62 @@
+
+import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * creates a scene which is the welcome scene of the application. It displays instructions
  * for use, the logo of the app and a means to input a price range.
  */
-public class WelcomeScene {
-    private Scene welcomeScene;
-    // the properties
-    private Listings listings;
-    // the root of the Scene
-    private BorderPane root;
-    // number text fields
-    private NumberTextField minField, maxField;
-    // labels used
-    private Label priceDetails,priceRangeLabel;
-    // buttons
-    private Button submit;
-    // the users price range.
+public class WelcomeScene extends SceneGenerator {
     private PriceRange range;
+    private Label priceDetails;
 
-
-    public WelcomeScene(Listings l){
-        listings = l;
+    public WelcomeScene(){
+        super();
         range = new PriceRange();
-        createScene();
+        priceDetails = new Label();
     }
 
     /**
-     * set up the welcome scene.
+     * build the main pane and return it to be used to build the scene.
+     * @return the pane created.
      */
-    public void createScene() {
-        root = new BorderPane();
-        addTopPane();
-        welcomeScene = new Scene(root, 300,300);
+    public Pane createPane() {
+        BorderPane root = new BorderPane();
+        root.setTop(topPane());
+        root.setStyle("-fx-background-color: blue");
+        root.setCenter(centrePane());
+        return root;
     }
 
     /**
      * Add a gridPane to the top of the root pane.
      */
-    private void addTopPane() {
-        VBox topPane = new VBox();
-        topPane.setPadding(new Insets(4,4,4,4));
-        priceRangeLabel = new Label("Price range");
+    private Pane topPane() {
 
-        topPane.getChildren().addAll(priceRangeLabel,createPricePane(),createPriceDetails());
-        topPane.setAlignment(Pos.TOP_RIGHT);
-        root.setTop(topPane);
+        priceDetails = new Label();
+        priceDetails.setText("choose a price range");
+
+        VBox topPane = new VBox();
+        topPane.getChildren().addAll(createPricePane(), priceDetails);
+        topPane.setAlignment(Pos.BASELINE_RIGHT);
+        topPane.setSpacing(10);
+        topPane.setPadding(new Insets(5,5,5,5));
+
+        topPane.setStyle("-fx-background-color: red");
+        return topPane;
     }
 
     /**
@@ -61,32 +67,71 @@ public class WelcomeScene {
         // pricePane
         HBox pricePane = new HBox();
         pricePane.setSpacing(3);
+
         //  numberText Boxes
-        minField = new NumberTextField();
-        maxField = new NumberTextField();
-        submit = new Button("Submit");
-        submit.setOnAction(e -> setPrice());
+        NumberTextField minField = new NumberTextField();
+        NumberTextField maxField = new NumberTextField();
+        minField.setOnAction(e -> setPrice(maxField, minField));
+        maxField.setOnAction(actionEvent -> setPrice(maxField, minField));
+
+        Button submit = new Button("Submit");
+        submit.setOnAction(e -> setPrice(maxField, minField));
+
         Label sign1 = new Label("From: £");
         Label sign2 = new Label("To: £");
-        setTextSize(12, sign1,sign2, priceRangeLabel, submit);
+
+        setTextSize(12, sign1,sign2, submit);
         pricePane.setAlignment(Pos.TOP_RIGHT);
 
         // set prompt text in text box
         minField.setPromptText("min price");
         maxField.setPromptText("max price");
+
         pricePane.getChildren().addAll(sign1,minField,sign2,maxField, submit);
 
         return pricePane;
     }
 
+
     /**
-     * create the label with the details of the price range.
-     * @return the label created.
+     * create the pane to go in the centre of the window.
      */
-    private Label createPriceDetails() {
-        priceDetails = new Label();
-        priceDetails.setText("Please choose a price range.");
-        return priceDetails;
+
+    public Pane centrePane() {
+        GridPane pane = new GridPane();
+
+        ImageView view = new ImageView(new Image(getClass().getResourceAsStream("Property Properly Logo.png")));
+
+        Button helpButton = new Button("Help");
+        Button gameButton = new Button("Game");
+        Button animationButton = new Button("Animate");
+
+        gameButton.setPrefWidth(70);
+        helpButton.setPrefWidth(70);
+        animationButton.setPrefWidth(70);
+
+        animationButton.setOnAction(e -> {
+            runAnimation(view);
+            view.setFitWidth(300);
+            view.setFitHeight(250);
+        });
+
+        view.setFitWidth(300);
+        view.setFitHeight(250);
+
+        HBox buttons = new HBox();
+        buttons.getChildren().addAll(helpButton, gameButton, animationButton);
+        buttons.setSpacing(30);
+        buttons.setAlignment(Pos.CENTER);
+
+        pane.add(buttons, 0,0, 2,1);
+        pane.add(view, 0,1,2,2);
+
+        pane.setGridLinesVisible(true);
+
+        pane.setAlignment(Pos.CENTER);
+
+        return pane;
     }
 
     /**
@@ -101,17 +146,24 @@ public class WelcomeScene {
      * update the price details label.
      * if they are not good, print an appropriate message.
      */
-    public void setPrice() {
-        int min = Integer.parseInt(minField.getText());
-        int max = Integer.parseInt(maxField.getText());
+    public void setPrice(NumberTextField maxField, NumberTextField minField) {
 
-        if(goodValues(min, max)) {
-            range.setMinimum(min);
-            range.setMaximum(max);
-            setPriceDetails();
+        boolean validValues = false;
+        // check there are values input
+        if (minField.getLength() > 0 && maxField.getLength() > 0) {
 
+            int min = Integer.parseInt(minField.getText());
+            int max = Integer.parseInt(maxField.getText());
+
+            // check the min is less than the max
+            if (goodValues(min, max)) {
+                range.setMinimum(min);
+                range.setMaximum(max);
+                setPriceDetails();
+                validValues = true;
+            }
         }
-        else {
+        if(!validValues) {
             invalidValueMessage();
         }
     }
@@ -129,15 +181,10 @@ public class WelcomeScene {
     }
 
     private void invalidValueMessage() {
-        System.out.println("invalid value.");
+        AlertBox.createAlertBox("Invalid Values", "Please enter valid values.");
     }
 
-    /**
-     * @return the welcomeScene created by this Class
-     */
-    public Scene getScene() {
-        return welcomeScene;
-    }
+
 
     /**
      * check the values are good, that is the min value is less than or equal to the max
@@ -151,6 +198,46 @@ public class WelcomeScene {
         }
         return false;
     }
+
+
+
+    private void runAnimation(Node node) {
+
+        ScaleTransition scaleTransition = new ScaleTransition();
+        scaleTransition.setDuration(Duration.millis(1000));
+        scaleTransition.setNode(node);
+
+        scaleTransition.setByY(0.5);
+        scaleTransition.setByX(0.5);
+
+        //Setting the cycle count for the translation
+        scaleTransition.setCycleCount(40);
+
+        //Setting auto reverse value to true
+        scaleTransition.setAutoReverse(true);
+
+        scaleTransition.play();
+
+        Stage stage = new Stage();
+        stage.setTitle("Stop animation");
+
+        FlowPane pane = new FlowPane();
+        Button stop = new Button("Stop");
+        stop.setOnAction(actionEvent -> {
+            scaleTransition.stop();
+            stage.close();
+        });
+
+        pane.getChildren().add(stop);
+        pane.setAlignment(Pos.CENTER);
+        stage.setScene(new Scene(pane));
+
+        stage.showAndWait();
+    }
+
+
+
+
 
     /**
      * Inner class to limit the a textField to accept only numbers.
@@ -190,4 +277,5 @@ public class WelcomeScene {
             return text.matches("[0-9]*");
         }
     }
+
 }
