@@ -3,6 +3,12 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * This class is designated to testing the Statistics class.
+ *
+ * @Author Judith Offenberg
+ */
+
 public class StatsTest {
 
     public static void main(String[] args) {
