@@ -22,7 +22,7 @@ public class OptionsBox {
         yesButton.setOnAction(e -> {
             result = true;
             window.close();}
-            );
+        );
         noButton.setOnAction(e -> {
             result = false;
             window.close();
@@ -45,24 +45,3 @@ public class OptionsBox {
         return result;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
