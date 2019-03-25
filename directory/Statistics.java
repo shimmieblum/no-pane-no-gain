@@ -63,7 +63,7 @@ public class Statistics {
 
     // adds the number of total available properties to the stats HashMap
     public void totalAvailableProperties() {
-        stats.put("Total Available Properties", listings.numberOfProperties());
+        stats.put("Total Available Properties", Integer.toString(listings.numberOfProperties()));
     }
 
     // adds the number of entire homes and apartments to the stats HashMap
@@ -208,9 +208,7 @@ public class Statistics {
         Returns all the statistics in one HashMap.
         @return the hashmap containing statistics.
      */
-    public Map<String, String> getStats() {
-        return stats;
-    }
+    public Map<String, String> getStats() { return stats; }
 
     /*
         Divides the statistics into two groups, one of which is displayed and one which is waiting to be shown.
