@@ -20,8 +20,7 @@ import java.util.Map;
  * @Author Judith Offenberg
  */
 
-public class StatsScene {
-    private Scene statsScene;
+public class StatsScene extends SceneGenerator{
     // the properties
     private Listings listings;
     // the root of the Scene
@@ -33,17 +32,16 @@ public class StatsScene {
     public StatsScene(Listings l){
         listings = l;
         stats  = new Statistics(listings);
-        createScene();
+        createPaneDetails();
 
     }
 
     /**
      * Set up the statistics scene using a Borderlayout. Top and bottom are configured in the superclass.
      */
-    public void createScene() {
+    public void createPaneDetails() {
         root = new BorderPane();
         addCenterPane();
-        statsScene = new Scene(root, 300,300);
     }
 
 
@@ -56,7 +54,7 @@ public class StatsScene {
         centerPane.setVgap(4);
         centerPane.setHgap(4);
 
-        centerPane.getChildren().addAll(createPane(), createPane(),createPane(),createPane() );
+        centerPane.getChildren().addAll(createStatsPane(), createStatsPane(),createStatsPane(),createStatsPane() );
         centerPane.setAlignment(Pos.CENTER);
         root.setCenter(centerPane);
     }
@@ -65,7 +63,7 @@ public class StatsScene {
      * create BorderPane with  one statistic
      * @return the initial BorderPane with one statistic
      */
-    private BorderPane createPane() {
+    private BorderPane createStatsPane() {
         BorderPane pane = new StatPane(stats).getPane();
         return pane;
     }
@@ -74,8 +72,8 @@ public class StatsScene {
     /**
      * @return the welcomeScene created by this Class
      */
-    public Scene getScene() {
-        return statsScene;
+    public Pane createPane() {
+        return root;
     }
 
 }
