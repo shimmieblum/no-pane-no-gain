@@ -55,7 +55,7 @@ public abstract class SceneGenerator {
         root.setTop(topBar(window));
         root.setCenter(createPane());
         root.setBottom(bottomBar());
-
+        root.setStyle("-fx-background-color: red");
 
         return new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
     }
@@ -74,7 +74,7 @@ public abstract class SceneGenerator {
         buttons.setSpacing(3);
         buttons.setAlignment(Pos.BASELINE_LEFT);
         buttons.setPadding(new Insets(5,5,5,5));
-        buttons.getChildren().addAll(nextButton, backButton);
+        buttons.getChildren().addAll(backButton, nextButton);
 
         return buttons;
     }
