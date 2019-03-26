@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=AirbnbDataLoader
+comment1.params=
+comment1.target=java.util.ArrayList\ load()
+comment1.text=\ \r\n\ Return\ an\ ArrayList\ containing\ the\ rows\ in\ the\ AirBnB\ London\ data\ set\ csv\ file.\r\n
+comment2.params=borough
+comment2.target=javafx.collections.ObservableList\ loadSpecific(java.lang.String)
+comment2.text=\r\n\ Return\ an\ array\ list\ of\ all\ air\ bnb\ listings\ for\ one\ specific\ london\ borough.\r\n
+comment3.params=borough\ priceFrom\ priceTo
+comment3.target=javafx.collections.ObservableList\ loadSpecific(java.lang.String,\ int,\ int)
+comment3.text=\r\n\ Return\ an\ array\ list\ of\ all\ air\ bnb\ listings\ for\ one\ specific\ london\ borough\r\n\ but\ only\ those\ within\ a\ defined\ price\ range\r\n
+comment4.params=borough
+comment4.target=int\ loadNumberOfProperties(java.lang.String)
+comment4.text=\r\n\ Return\ the\ number\ of\ properties\ in\ a\ specific\ london\ borough.\r\n
+comment5.params=doubleString
+comment5.target=java.lang.Double\ convertDouble(java.lang.String)
+comment5.text=\r\n\r\n\ @param\ doubleString\ the\ string\ to\ be\ converted\ to\ Double\ type\r\n\ @return\ the\ Double\ value\ of\ the\ string,\ or\ -1.0\ if\ the\ string\ is\ \r\n\ either\ empty\ or\ just\ whitespace\r\n
+comment6.params=intString
+comment6.target=java.lang.Integer\ convertInt(java.lang.String)
+comment6.text=\r\n\r\n\ @param\ intString\ the\ string\ to\ be\ converted\ to\ Integer\ type\r\n\ @return\ the\ Integer\ value\ of\ the\ string,\ or\ -1\ if\ the\ string\ is\ \r\n\ either\ empty\ or\ just\ whitespace\r\n
+numComments=7
