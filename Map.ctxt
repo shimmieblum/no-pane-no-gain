@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=Map
+comment0.target=MapScene
 comment0.text=\r\n\ A\ class\ to\ display\ a\ map\ of\ london\ boroughs,\ each\ borough\ can\ be\ clicked\r\n\ on\ to\ launch\ a\ second\ scene\ which\ displays\ a\ table\ containing\ information\r\n\ about\ that\ boroughs\ airbnb\ listings.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=stage
 comment1.target=void\ start(javafx.stage.Stage)

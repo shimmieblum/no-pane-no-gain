@@ -184,7 +184,7 @@ public class WelcomeScene extends SceneGenerator {
      * @param size the new size
      * @param labeleds the labeled objects to be altered.
      */
-    private void setTextSize(double size, Labeled... labeleds) {
+    public void setTextSize(double size, Labeled... labeleds) {
         for (int i = 0; i < labeleds.length; i++) {
             Labeled label = labeleds[i];
             label.setFont(new Font(size));

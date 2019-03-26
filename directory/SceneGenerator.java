@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -157,6 +158,18 @@ public abstract class SceneGenerator {
     public void setSceneGenerators(SceneGenerator nextSceneGenerator, SceneGenerator backSceneGenerator) {
         this.nextSceneGenerator = nextSceneGenerator;
         this.backSceneGenerator = backSceneGenerator;
+    }
+
+    /**
+     * set the size of the text of a label.
+     * @param size the new size
+     * @param labeleds the labeled objects to be altered.
+     */
+    public void setTextSize(double size, Labeled... labeleds) {
+        for (int i = 0; i < labeleds.length; i++) {
+            Labeled label = labeleds[i];
+            label.setFont(new Font(size));
+        }
     }
 
     /**
