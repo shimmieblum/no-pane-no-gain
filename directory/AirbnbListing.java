@@ -33,7 +33,7 @@ public class AirbnbListing {
     private double longitude;
 
     /**
-     * The type of property, either "Private room" or "Entire Home/apt".
+     * The type of property, either "Private room", "Shared room" or "Entire Home/apt".
      */
     private String room_type;
 
