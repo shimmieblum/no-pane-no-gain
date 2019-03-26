@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="915.0" prefWidth="1069.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Map">
+  <children>
+      <MenuBar prefHeight="25.0" prefWidth="972.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <StackPane prefHeight="778.0" prefWidth="942.0">
+         <children>
+            <ImageView fitHeight="812.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../boroughs.png" />
+               </image>
+            </ImageView>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="158.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="401.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="724.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Button fx:id="enfield" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="ENFI" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="15.0" left="65.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="barnet" layoutX="329.0" layoutY="11.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="BARN">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="haringey" layoutX="457.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="HRGY">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="walthamforest" layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="WALT">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                     <children>
+                        <Button fx:id="havering" layoutX="912.0" layoutY="7.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="HAVE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="redbridge" layoutX="782.0" layoutY="7.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="REDB">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="hackney" layoutX="653.0" layoutY="7.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="HACK">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="islington" layoutX="524.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="ISLI">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="camden" layoutX="393.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="CAMD">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="brent" layoutX="267.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="BREN">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="harrow" layoutX="134.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="HRRW">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                     <children>
+                        <Button fx:id="barkinganddagenham" layoutX="847.0" layoutY="6.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="BARK">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="newham" layoutX="717.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="NEWH">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="towerhamlets" layoutX="587.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="TOWH">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="westminster" layoutX="458.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="WSTM">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="kensingtonandchelsea" layoutX="328.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="KENS">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ealing" layoutX="199.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="EALI">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="hillingdon" layoutX="70.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="HILL">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+                     <children>
+                        <Button fx:id="bexley" layoutX="782.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="BEXL">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="greenwich" layoutX="650.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="GWCH">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cityoflondon" layoutX="523.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="CITY">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="wandsworth" layoutX="393.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="WAND">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="hammersmithandfulham" layoutX="262.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="HAMM">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="hounslow" layoutX="136.0" layoutY="12.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="HOUN">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+                     <children>
+                        <Button fx:id="lewisham" layoutX="718.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="LEWS">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="southwark" layoutX="589.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="STHW">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="lambeth" layoutX="459.0" layoutY="8.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: green;" text="LAMB">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="merton" layoutX="329.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="MERT">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="richmonduponthames" layoutX="199.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="RICH">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
+                     <children>
+                        <Button fx:id="bromley" layoutX="653.0" layoutY="9.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="BROM">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="croydon" layoutX="522.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: orange;" text="CROY">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="sutton" layoutX="393.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="SUTT">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="kingstonuponthames" layoutX="263.0" layoutY="10.0" mnemonicParsing="false" onAction="#Click" prefWidth="98.0" style="-fx-background-color: red;" text="KING">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+         </children>
+      </StackPane>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Show properties from:">
+               <HBox.margin>
+                  <Insets left="50.0" top="1.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="priceFrom" prefHeight="23.0" prefWidth="149.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+            <Label text="to:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="1.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="priceTo" prefHeight="23.0" prefWidth="149.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="filterButton" mnemonicParsing="false" onAction="#filterClick" text="Filter">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+  </children>
+</VBox>
