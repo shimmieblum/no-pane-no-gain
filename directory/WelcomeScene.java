@@ -1,4 +1,5 @@
 
+
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -254,5 +255,4 @@ public class WelcomeScene extends SceneGenerator {
             return text.matches("[0-9]*");
         }
     }
-
 }

@@ -15,7 +15,7 @@ public class MainWindow extends Application {
 
     // the stage
     private Stage window;
-    
+
     public MainWindow(String[] args) {
         launch(args);
     }
