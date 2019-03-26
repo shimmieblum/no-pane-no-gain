@@ -60,6 +60,7 @@ public class MainWindow extends Application {
         return welcomeScene.getScene(window);
     }
 
+
     /**
      * set scene to the a new scene scene.
      */

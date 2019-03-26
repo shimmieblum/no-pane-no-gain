@@ -26,7 +26,7 @@ public class WelcomeScene extends SceneGenerator {
 
     public WelcomeScene(){
         super();
-        range = new PriceRange();
+        range = null;
         priceDetails = new Label();
     }
 
@@ -158,6 +158,7 @@ public class WelcomeScene extends SceneGenerator {
 
             // check the min is less than the max
             if (goodValues(min, max)) {
+                range = new PriceRange();
                 range.setMinimum(min);
                 range.setMaximum(max);
                 setPriceDetails();
@@ -168,6 +169,15 @@ public class WelcomeScene extends SceneGenerator {
             invalidValueMessage();
         }
     }
+
+    @Override
+    public boolean nextSceneConditionMet() {
+        if (range == null) {
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * set the size of the text of a label.
