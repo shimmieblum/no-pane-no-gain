@@ -33,31 +33,28 @@ public class BookingScene extends SceneGenerator {
     // variable for total price of booked property
     private int endPrice;
 
-
     public BookingScene(Listings l){
         super();
         listings = l;
-        createPane();
+        createScene();
     }
 
     /**
      *  Build the main pane and return it to be used to build the scene.
      *  @return the pane created.
      */
-    public Pane createPane() {
+    public Pane createScene() {
         root = new BorderPane();
-        root.setCenter(centerPane());
-        root.setTop(topPane());
+        root.setCenter(createPane());
         bookScene = new Scene(root, 300,300);
         return root;
     }
-
 
     /**
      *  Create the pane to go in the center of the window.
      *  @return the center pane created.
      */
-    private Pane centerPane() {
+    public Pane createPane() {
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(10, 10, 10, 10));
         pane.setVgap(5);
@@ -104,39 +101,27 @@ public class BookingScene extends SceneGenerator {
             HashMap<String, Integer> propertyPrices = new HashMap<>();
             propertyPrices.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
             int enteredNights = Integer.parseInt(enterNights.getText());
+            int currentListingIndex = 0;
+
+            if (listings.getProperty(i).getName().equals(enterPropName.getText())) {
+                currentListingIndex = i;
+            }
 
             book.setOnAction(e -> {
                 if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
                         && enterNights.getText() != null && !enterNights.getText().isEmpty()) {
                     endPrice = enteredNights*propertyPrices.get(enterPropName.getText());
-                    //loader.load.remove(10);
+                    listings.getProperty(currentListingIndex).setAvailability365(0);
                     bookConfirmation.setText("Thank you for booking!");
                 } else {
-                    bookConfirmation.setText("Please enter your details.");
+                    bookConfirmation.setText("Please fill in all your details correctly.");
                 }
             });
         }
 
         pane.setGridLinesVisible(true);
-
         pane.setAlignment(Pos.CENTER);
 
         return pane;
     }
-
-    /**
-     *  Create the pane to go at the top of the window.
-     *  @return the top pane created.
-     */
-    private Pane topPane()
-    {
-        TilePane pane = new TilePane();
-
-        Label title = new Label("Booking");
-        pane.getChildren().add(title);
-        pane.setAlignment(Pos.CENTER);
-
-        return pane;
-    }
-
 }
