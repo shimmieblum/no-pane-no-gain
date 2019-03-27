@@ -23,7 +23,6 @@ import java.util.Map;
  */
 
 public class BookingScene extends SceneGenerator {
-    private Scene bookScene;
     // the properties
     private Listings listings;
     // arrayList of loaded properties
@@ -32,13 +31,14 @@ public class BookingScene extends SceneGenerator {
     private BorderPane root;
     // variable for total price of booked property
     private int endPrice;
-    //creates a HashMap of all the properties
+    // HashMap of all the properties
     HashMap<String, Integer> properties = new HashMap<>();
 
     public BookingScene(Listings l){
         super();
         listings = l;
         createScene();
+        // fill HashMap with all the properties
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             properties.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
         }
@@ -51,7 +51,6 @@ public class BookingScene extends SceneGenerator {
     public Pane createScene() {
         root = new BorderPane();
         root.setCenter(createPane());
-        bookScene = new Scene(root, 300,300);
         return root;
     }
 
