@@ -10,10 +10,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.*;
 import javafx.collections.*;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.fxml.Initializable;
+
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.scene.input.MouseEvent;
 
@@ -25,7 +29,7 @@ import javafx.scene.input.MouseEvent;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MapScene extends SceneGenerator
+public class MapScene extends ChoiceScene
 {
     boolean filtered = false;
     AirbnbDataLoader airbnbDataLoader = new AirbnbDataLoader();
@@ -36,25 +40,39 @@ public class MapScene extends SceneGenerator
     @FXML
     private TextField priceTo;
 
-    public MapScene()
+
+
+
+    public MapScene(PriceRange priceRange){
+        super();
+        setRange(priceRange);
+    }
+
 
     /**
      * The loading of the map scene from fxml document
      */
-    @Override
-    public void start(Stage stage) throws Exception
-    {
+    public Pane setRoot () throws Exception {
         URL url = getClass().getResource("map.fxml");
         Pane root = FXMLLoader.load(url);
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(root);
-        Scene scene = new Scene (scrollPane);
+        return root;
+    }
 
-        stage.setTitle("MapScene of London boroughs");
-        stage.setHeight(700);
-        stage.setScene(scene);
-        stage.setResizable(true);
-        stage.show();
+    /**
+     * the pane to go in the centre of the screen
+     * @return the pane with the map in it.
+     */
+    public Pane createCentrePane() {
+
+        ScrollPane scrollPane = new ScrollPane();
+        try {
+            scrollPane.setContent(setRoot());
+        }
+
+        catch (Exception e) {System.err.println(e.getCause());}
+        BorderPane pane = new BorderPane();
+        pane.setCenter(scrollPane);
+        return pane;
     }
     
     

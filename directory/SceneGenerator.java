@@ -62,6 +62,12 @@ public abstract class SceneGenerator {
         return new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
     }
 
+    /**
+     * create the top bar with buttons 'next' and 'back'.
+     * these buttons can be disabled if a condition isn't met
+     * @param window
+     * @return
+     */
     private Pane topBar(Stage window) {
         // the next and back buttons
         Button nextButton = new Button(nextText());
@@ -81,6 +87,10 @@ public abstract class SceneGenerator {
         return buttons;
     }
 
+    /**
+     * set the bottom bar with logo and text - common to all.
+     * @return
+     */
     public Pane bottomBar() {
 
         // create and size ImageViewer of logo
@@ -109,7 +119,10 @@ public abstract class SceneGenerator {
 
     }
 
-
+    /**
+     * move to the next scene
+     * @param window
+     */
     private void nextScene(Stage window) {
         if (nextSceneGenerator != null & nextSceneConditionMet()) {
             window.setScene(nextSceneGenerator.getScene(window));
@@ -117,6 +130,10 @@ public abstract class SceneGenerator {
         }
     }
 
+    /**
+     * move to the back scene.
+     * @param window
+     */
     private void backScene(Stage window) {
         if (backSceneGenerator !=null) {
             window.setScene(backSceneGenerator.getScene(window));

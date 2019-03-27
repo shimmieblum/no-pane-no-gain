@@ -21,7 +21,6 @@ import java.util.Map;
  */
 
 public class StatsScene extends SceneGenerator {
-    private Scene statsScene;
     // the properties
     private Listings listings;
     // the root of the Scene
@@ -33,40 +32,30 @@ public class StatsScene extends SceneGenerator {
     public StatsScene(Listings l){
         listings = l;
         stats  = new Statistics(listings);
-        createScene();
-
-    }
-
-    /**
-     * Set up the statistics scene using a Borderlayout. Top and bottom are configured in the superclass.
-     */
-    public void createScene() {
-        root = new BorderPane();
-        addCenterPane();
-        statsScene = new Scene(root, 300,300);
     }
 
 
     /**
-     * Add a FlowPane to the center of the root pane.
+     * create and return the pane that will go in the centre of the screen
+     * @return the main pane of this scene
      */
-    private void addCenterPane() {
+    public Pane createPane() {
         FlowPane centerPane = new FlowPane();
         centerPane.setPadding(new Insets(20,20,20,20));
         centerPane.setVgap(4);
         centerPane.setHgap(4);
         centerPane.setPrefWrapLength(600);
 
-        centerPane.getChildren().addAll(createPane(), createPane(),createPane(),createPane() );
+        centerPane.getChildren().addAll(createStatsPane(), createStatsPane(),createStatsPane(), createStatsPane());
         centerPane.setAlignment(Pos.CENTER);
-        root.setCenter(centerPane);
+        return centerPane;
     }
 
     /**
      * create BorderPane with  one statistic
      * @return the initial BorderPane with one statistic
      */
-    public Pane createPane() {
+    public Pane createStatsPane() {
         BorderPane pane = new StatPane(stats).getPane();
         return pane;
     }

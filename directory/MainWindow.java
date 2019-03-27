@@ -49,14 +49,15 @@ public class MainWindow extends Application {
     }
 
     private Scene createSceneGenerators(Listings listings) {
-        SceneGenerator welcomeScene,  statsScene ;
+        SceneGenerator welcomeScene,  statsScene, mapScene ;
         welcomeScene = new WelcomeScene();
-        //mapScene = new MapScene();
+        mapScene = new MapScene(((WelcomeScene) welcomeScene).getRange());
         statsScene = new StatsScene(listings);
         //challengeScene = new ChallengeScene();
 
-        welcomeScene.setSceneGenerators(statsScene, null);
-        statsScene.setSceneGenerators(null, welcomeScene);
+        welcomeScene.setSceneGenerators(mapScene, null);
+        mapScene.setSceneGenerators(statsScene, welcomeScene);
+        statsScene.setSceneGenerators(null, mapScene);
         return welcomeScene.getScene(window);
     }
 

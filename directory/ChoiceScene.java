@@ -10,6 +10,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+/**
+ * A class for the two scenes in which the uset can choose results: the map and welcome scenes.
+ *
+ * This superclass ensures the buttons to choose the price remain in both. it also contains a PriceRange
+ * which can be shared so the information is consistent.
+ */
+
 public abstract class ChoiceScene extends SceneGenerator{
 
     private PriceRange range;
@@ -20,6 +27,10 @@ public abstract class ChoiceScene extends SceneGenerator{
         range = null;
     }
 
+    /**
+     * creates the central pane, which itself contains the buttons and a space for another central pane.
+     * @return
+     */
     @Override
     public Pane createPane() {
         BorderPane pane = new BorderPane();
@@ -29,7 +40,7 @@ public abstract class ChoiceScene extends SceneGenerator{
     }
 
     /**
-     * Add a gridPane to the top of the root pane.
+     * Add a Pane to the top of the root pane containing the price buttons
      */
     private Pane topPane() {
 
@@ -134,7 +145,28 @@ public abstract class ChoiceScene extends SceneGenerator{
         return pricePane;
     }
 
+    /**
+     * @return the price range
+     */
+    public PriceRange getRange() {
+        return range;
+    }
+
+    /**
+     * set the price range
+     * @param range the new price range
+     */
+    public void setRange(PriceRange range) {
+        this.range = range;
+    }
+
+    /**
+     * implement to set the central pane.
+     * @return
+     */
     public abstract Pane createCentrePane();
+
+
 
 
 
