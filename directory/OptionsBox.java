@@ -1,3 +1,4 @@
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,12 +18,12 @@ public class OptionsBox {
         window.initModality(Modality.APPLICATION_MODAL);
 
         Label messageLabel = new Label(message);
-        Button yesButton = new Button("yes");
-        Button noButton = new Button("no");
+        Button yesButton = new Button("Yes");
+        Button noButton = new Button("No");
         yesButton.setOnAction(e -> {
             result = true;
             window.close();}
-        );
+            );
         noButton.setOnAction(e -> {
             result = false;
             window.close();

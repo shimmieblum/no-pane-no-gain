@@ -1,3 +1,5 @@
+
+
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +26,7 @@ public class WelcomeScene extends SceneGenerator {
 
     public WelcomeScene(){
         super();
-        range = new PriceRange();
+        range = null;
         priceDetails = new Label();
     }
 
@@ -110,7 +112,7 @@ public class WelcomeScene extends SceneGenerator {
         animationButton.setPrefWidth(70);
 
         animationButton.setOnAction(e -> {
-            runAnimation(view);
+            new Animate(view);
             view.setFitWidth(300);
             view.setFitHeight(250);
         });
@@ -156,6 +158,7 @@ public class WelcomeScene extends SceneGenerator {
 
             // check the min is less than the max
             if (goodValues(min, max)) {
+                range = new PriceRange();
                 range.setMinimum(min);
                 range.setMaximum(max);
                 setPriceDetails();
@@ -166,6 +169,15 @@ public class WelcomeScene extends SceneGenerator {
             invalidValueMessage();
         }
     }
+
+    @Override
+    public boolean nextSceneConditionMet() {
+        if (range == null) {
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * set the size of the text of a label.
@@ -200,39 +212,6 @@ public class WelcomeScene extends SceneGenerator {
 
 
 
-    private void runAnimation(Node node) {
-
-        ScaleTransition scaleTransition = new ScaleTransition();
-        scaleTransition.setDuration(Duration.millis(1000));
-        scaleTransition.setNode(node);
-
-        scaleTransition.setByY(0.5);
-        scaleTransition.setByX(0.5);
-
-        //Setting the cycle count for the translation
-        scaleTransition.setCycleCount(40);
-
-        //Setting auto reverse value to true
-        scaleTransition.setAutoReverse(true);
-
-        scaleTransition.play();
-
-        Stage stage = new Stage();
-        stage.setTitle("Stop animation");
-
-        FlowPane pane = new FlowPane();
-        Button stop = new Button("Stop");
-        stop.setOnAction(actionEvent -> {
-            scaleTransition.stop();
-            stage.close();
-        });
-
-        pane.getChildren().add(stop);
-        pane.setAlignment(Pos.CENTER);
-        stage.setScene(new Scene(pane));
-
-        stage.showAndWait();
-    }
 
 
 
@@ -276,5 +255,4 @@ public class WelcomeScene extends SceneGenerator {
             return text.matches("[0-9]*");
         }
     }
-
 }
