@@ -1,25 +1,17 @@
-import com.sun.jdi.IntegerValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
- *  Creates a scene which is the booking scene of the application. It displays the booking page where the user can book a
- *  property from the available listings.
+ * Creates a scene which is the booking scene of the application. It displays the booking page where the user can book a
+ * property from the available listings.
  *
- *  @Author Mi-kaela Marciales
+ * @Author Mi-kaela Marciales
  */
 
 public class BookingScene extends SceneGenerator {
@@ -45,8 +37,8 @@ public class BookingScene extends SceneGenerator {
     }
 
     /**
-     *  Build the main pane and return it to be used to build the scene.
-     *  @return the pane created.
+     * Build the main pane and return it to be used to build the scene.
+     * @return the pane created.
      */
     public Pane createScene() {
         root = new BorderPane();
@@ -55,12 +47,12 @@ public class BookingScene extends SceneGenerator {
     }
 
     /**
-     *  Create the pane to go in the center of the window.
-     *  @return the center pane created.
+     * Create the pane to go in the center of the window.
+     * @return the center pane created.
      */
     public Pane createPane() {
         GridPane pane = new GridPane();
-        pane.setPadding(new Insets(10, 10, 10, 10));
+        pane.setPadding(new Insets(20, 20, 20, 20));
         pane.setVgap(5);
         pane.setHgap(5);
 
@@ -97,14 +89,19 @@ public class BookingScene extends SceneGenerator {
         pane.getChildren().add(bookConfirmation);
 
         /**
-         *  When the user clicks the BOOK button, generate the grand total price
-         *  and remove the property from available listings.
-         *  If text is not filled in properly, return an error statement.
+         * When the user clicks the BOOK button, generate the grand total price
+         * and remove the property from available listings.
+         * If text is not filled in properly, return an error statement.
          */
         for(int i = 0; i < listings.numberOfProperties(); i++) {
             HashMap<String, Integer> propertyPrices = new HashMap<>();
             propertyPrices.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
             int enteredNights = Integer.parseInt(enterNights.getText());
+            //int currentListingIndex = 0;
+
+            //if (enterPropName.getText().equals(listings.getProperty(i).getName())) {
+                //currentListingIndex = i;
+            //}
 
             book.setOnAction(e -> {
                 if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
@@ -112,6 +109,7 @@ public class BookingScene extends SceneGenerator {
                         && properties.keySet().contains(enterPropName.getText())) {
                     endPrice = enteredNights*propertyPrices.get(enterPropName.getText());
                     properties.remove(enterPropName.getText());
+                    //listings.deleteListing(currentListingIndex);
                     bookConfirmation.setText("Thank you for booking!");
                 } else {
                     bookConfirmation.setText("Please fill in all your details correctly.");
@@ -119,7 +117,6 @@ public class BookingScene extends SceneGenerator {
             });
         }
 
-        pane.setGridLinesVisible(true);
         pane.setAlignment(Pos.CENTER);
 
         return pane;
