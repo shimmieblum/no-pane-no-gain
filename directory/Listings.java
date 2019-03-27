@@ -83,6 +83,14 @@ public class Listings
     }
 
     /**
+     * Deletes listing when booked in BookingScene.
+     * @param listingIndex the index of the listing to be deleted.
+     */
+    public void deleteListing(int listingIndex){
+        loadProperties().remove(listingIndex);
+    }
+
+    /**
      *
      * @param doubleString the string to be converted to Double type
      * @return the Double value of the string, or -1.0 if the string is
