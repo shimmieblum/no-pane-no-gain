@@ -32,11 +32,16 @@ public class BookingScene extends SceneGenerator {
     private BorderPane root;
     // variable for total price of booked property
     private int endPrice;
+    //creates a HashMap of all the properties
+    HashMap<String, Integer> properties = new HashMap<>();
 
     public BookingScene(Listings l){
         super();
         listings = l;
         createScene();
+        for (int i = 0; i < listings.numberOfProperties(); i++) {
+            properties.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
+        }
     }
 
     /**
@@ -101,17 +106,13 @@ public class BookingScene extends SceneGenerator {
             HashMap<String, Integer> propertyPrices = new HashMap<>();
             propertyPrices.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
             int enteredNights = Integer.parseInt(enterNights.getText());
-            int currentListingIndex = 0;
-
-            if (listings.getProperty(i).getName().equals(enterPropName.getText())) {
-                currentListingIndex = i;
-            }
 
             book.setOnAction(e -> {
                 if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
-                        && enterNights.getText() != null && !enterNights.getText().isEmpty()) {
+                        && enterNights.getText() != null && !enterNights.getText().isEmpty()
+                        && properties.keySet().contains(enterPropName.getText())) {
                     endPrice = enteredNights*propertyPrices.get(enterPropName.getText());
-                    listings.getProperty(currentListingIndex).setAvailability365(0);
+                    properties.remove(enterPropName.getText());
                     bookConfirmation.setText("Thank you for booking!");
                 } else {
                     bookConfirmation.setText("Please fill in all your details correctly.");
