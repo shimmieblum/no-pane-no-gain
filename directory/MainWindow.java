@@ -182,10 +182,11 @@ public class MainWindow extends Application {
      * move to the back scene.
      */
     private void backScene() {
-        if(currentPaneIndex < 0) {
+        if(currentPaneIndex >
+                0) {
             int i = currentPaneIndex;
             PaneGenerator previousGenerator = paneList[i];
-            currentPaneIndex = i--;
+            currentPaneIndex--;
             setCenterPane(paneList[currentPaneIndex].getPane(previousGenerator.getRange()));
         }
     }

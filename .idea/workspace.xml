@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b2581a4-c470-42c4-9f3c-0d7348db90b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/ChoicePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/ChoicePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/directory/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/MapPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/MapPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/OptionsBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/OptionsBox.java" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/no_pane_no_gain/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="272">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
@@ -67,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/directory/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
+            <state relative-caret-position="241">
+              <caret line="187" column="30" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
               <folding>
                 <element signature="e#1412#1413#0" expanded="true" />
                 <element signature="e#1436#1437#0" expanded="true" />
@@ -251,7 +247,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553810135707" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553810495208" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -357,7 +353,7 @@
       <workItem from="1553639239489" duration="5351000" />
       <workItem from="1553728959348" duration="8886000" />
       <workItem from="1553768137060" duration="472000" />
-      <workItem from="1553770851588" duration="3115000" />
+      <workItem from="1553770851588" duration="3407000" />
     </task>
     <task id="LOCAL-00001" summary="refactored StatsScene to conform to the super class SceneGenerator.">
       <created>1553536116274</created>
@@ -408,11 +404,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553771199064</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="got pane to work, plus added some comments.">
+      <created>1553810177580</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1553810177580</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46075000" />
+    <option name="totallyTimeSpent" value="46367000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,9 +427,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19676113" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19676113" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -436,12 +440,12 @@
       <window_info id="Learn" order="7" weight="0.32955465" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.94671404" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.94671404" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6678508" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3285968" />
@@ -504,7 +508,8 @@
     <MESSAGE value="commenting and fitting together" />
     <MESSAGE value="going to embark on major refactor. this is a back up" />
     <MESSAGE value="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested." />
-    <option name="LAST_COMMIT_MESSAGE" value="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested." />
+    <MESSAGE value="got pane to work, plus added some comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="got pane to work, plus added some comments." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -802,23 +807,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/directory/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
+        <state relative-caret-position="241">
+          <caret line="187" column="30" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
           <folding>
             <element signature="e#1412#1413#0" expanded="true" />
             <element signature="e#1436#1437#0" expanded="true" />
             <element signature="e#6158#6159#0" expanded="true" />
             <element signature="e#6194#6195#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
