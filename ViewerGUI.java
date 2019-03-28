@@ -97,7 +97,7 @@ public class ViewerGUI
     }
 
     /**
-     * Called when the 'View on Map' button was clicked.
+     * Called when the 'View on MapPane' button was clicked.
      */
     private void viewOnMapsButton()
     {
@@ -215,7 +215,7 @@ public class ViewerGUI
         });
         toolbar.add(previousButton);
 
-        JButton mapButton = new JButton("View Property on Map");
+        JButton mapButton = new JButton("View Property on MapPane");
         mapButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) { viewOnMapsButton(); }
         });

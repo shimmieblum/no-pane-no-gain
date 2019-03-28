@@ -6,13 +6,18 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.*;
 import javafx.collections.*;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.fxml.Initializable;
+
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.scene.input.MouseEvent;
 
@@ -24,7 +29,7 @@ import javafx.scene.input.MouseEvent;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Map extends Application
+public class MapPane extends ChoicePane
 {
     boolean filtered = false;
     AirbnbDataLoader airbnbDataLoader = new AirbnbDataLoader();
@@ -34,22 +39,39 @@ public class Map extends Application
     
     @FXML
     private TextField priceTo;
-    
-    
+
+
+
+
+    public MapPane(){
+        super();
+    }
+
+
     /**
      * The loading of the map scene from fxml document
      */
-    @Override
-    public void start(Stage stage) throws Exception
-    {
+    public Pane setRoot () throws Exception {
         URL url = getClass().getResource("map.fxml");
         Pane root = FXMLLoader.load(url);
-        Scene scene = new Scene (root);
+        return root;
+    }
 
-        stage.setTitle("Map of London boroughs");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    /**
+     * the pane to go in the centre of the screen
+     * @return the pane with the map in it.
+     */
+    public Pane createCentrePane() {
+        setPriceDetails();
+        ScrollPane scrollPane = new ScrollPane();
+        try {
+            scrollPane.setContent(setRoot());
+        }
+
+        catch (Exception e) {System.err.println(e.getCause());}
+        BorderPane pane = new BorderPane();
+        pane.setCenter(scrollPane);
+        return pane;
     }
     
     
@@ -144,12 +166,13 @@ public class Map extends Application
 
         // JavaFX must have a Scene (window content) inside a Stage (window)
         Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root);
         stage.setTitle("Borough of: " + listings.get(0).getNeighbourhood());
         stage.setScene(scene);
 
         // Show the Stage (window)
-        stage.show();
+        stage.showAndWait();
     }
     
     /**
@@ -178,13 +201,14 @@ public class Map extends Application
        root.getChildren().addAll(myLabel);
        
        Stage stage = new Stage();
+       stage.initModality(Modality.APPLICATION_MODAL);
        Scene scene = new Scene(root, 500, 100);
        stage.setTitle("Description of " + selectedListing.get(0).getHost_name()
                        + "'s property");
        stage.setScene(scene);
 
        // Show the Stage (window)
-       stage.show();
+       stage.showAndWait();
     }
     
     /**

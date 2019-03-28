@@ -9,7 +9,7 @@ import java.util.Dictionary;
 
 /**
  * The class computing all the calculations and storing them in the stats HashMap by name and figure.
- * This class is used in StatPane and StatsScene.
+ * This class is used in IndividualStatPane and StatsPane.
  * It consists of all the statistics in "stats" and then stores the keys of those displayed or undisplayed statistics
  * in lists.
  *

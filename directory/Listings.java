@@ -83,7 +83,7 @@ public class Listings
     }
 
     /**
-     * Deletes listing when booked in BookingScene.
+     * Deletes listing when booked in BookingPane.
      * @param listingIndex the index of the listing to be deleted.
      */
     public void deleteListing(int listingIndex){
