@@ -45,7 +45,7 @@ public abstract class ChoiceScene extends SceneGenerator{
     private Pane topPane() {
 
         priceDetails = new Label();
-        priceDetails.setText("choose a price range");
+        setPriceDetails();
 
         VBox topPane = new VBox();
         topPane.getChildren().addAll(createPricePane(), priceDetails);
@@ -62,8 +62,14 @@ public abstract class ChoiceScene extends SceneGenerator{
      * update the price range label.
      */
     private void setPriceDetails() {
-        priceDetails.setText("price range: From: £" + range.getMinimum() + " To: £" + range.getMaximum());
+        if(range == null) {
+            priceDetails.setText("Please enter a price range");
+        }
+        else {
+            priceDetails.setText("price range: From: £" + range.getMinimum() + " To: £" + range.getMaximum());
+        }
     }
+
 
     /**
      * check the values of min and max and set the PriceRange if they are good.

@@ -56,6 +56,7 @@ public abstract class SceneGenerator {
         //set the top and bottom bars, and leave the centre for each subclass to create.
         root.setTop(topBar(window));
         root.setCenter(createPane());
+        root.getCenter().setStyle("-fx-background-color: skyblue");
         root.setBottom(bottomBar());
         root.setStyle("-fx-background-color: red");
 
