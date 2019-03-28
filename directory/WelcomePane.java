@@ -20,9 +20,9 @@ import javafx.util.Duration;
  * creates a scene which is the welcome scene of the application. It displays instructions
  * for use, the logo of the app and a means to input a price range.
  */
-public class WelcomeScene extends ChoiceScene {
+public class WelcomePane extends ChoicePane {
 
-    public WelcomeScene() {
+    public WelcomePane() {
         super();
     }
 
@@ -73,7 +73,7 @@ public class WelcomeScene extends ChoiceScene {
      * @return true if the condition is met. else false.
      */
     @Override
-    public boolean nextSceneConditionMet() {
+    public boolean nextConditionMet() {
         if (getRange() == null) {
             return false;
         }

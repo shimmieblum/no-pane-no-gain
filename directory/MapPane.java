@@ -29,7 +29,7 @@ import javafx.scene.input.MouseEvent;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MapScene extends ChoiceScene
+public class MapPane extends ChoicePane
 {
     boolean filtered = false;
     AirbnbDataLoader airbnbDataLoader = new AirbnbDataLoader();
@@ -43,9 +43,8 @@ public class MapScene extends ChoiceScene
 
 
 
-    public MapScene(PriceRange priceRange){
+    public MapPane(){
         super();
-        setRange(priceRange);
     }
 
 

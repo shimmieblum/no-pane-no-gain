@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @Author Mi-kaela Marciales
  */
 
-public class BookingScene extends SceneGenerator {
+public class BookingPane extends PaneGenerator {
     // the properties
     private Listings listings;
     // arrayList of loaded properties
@@ -26,10 +26,9 @@ public class BookingScene extends SceneGenerator {
     // HashMap of all the properties
     HashMap<String, Integer> properties = new HashMap<>();
 
-    public BookingScene(Listings l){
+    public BookingPane(Listings l){
         super();
         listings = l;
-        createScene();
         // fill HashMap with all the properties
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             properties.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
@@ -37,20 +36,10 @@ public class BookingScene extends SceneGenerator {
     }
 
     /**
-     * Build the main pane and return it to be used to build the scene.
-     * @return the pane created.
-     */
-    public Pane createScene() {
-        root = new BorderPane();
-        root.setCenter(createPane());
-        return root;
-    }
-
-    /**
      * Create the pane to go in the center of the window.
      * @return the center pane created.
      */
-    public Pane createPane() {
+    public Pane getPane(PriceRange range) {
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20, 20, 20, 20));
         pane.setVgap(5);
@@ -88,7 +77,7 @@ public class BookingScene extends SceneGenerator {
         GridPane.setColumnSpan(bookConfirmation, 2);
         pane.getChildren().add(bookConfirmation);
 
-        /**
+        /*
          * When the user clicks the BOOK button, generate the grand total price
          * and remove the property from available listings.
          * If text is not filled in properly, return an error statement.

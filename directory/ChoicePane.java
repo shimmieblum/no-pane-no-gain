@@ -2,13 +2,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 /**
  * A class for the two scenes in which the uset can choose results: the map and welcome scenes.
@@ -17,12 +15,12 @@ import javafx.scene.text.Font;
  * which can be shared so the information is consistent.
  */
 
-public abstract class ChoiceScene extends SceneGenerator{
+public abstract class ChoicePane extends PaneGenerator{
 
     private PriceRange range;
     private Label priceDetails;
 
-    public ChoiceScene() {
+    public ChoicePane() {
         super();
         range = null;
     }
@@ -32,7 +30,8 @@ public abstract class ChoiceScene extends SceneGenerator{
      * @return
      */
     @Override
-    public Pane createPane() {
+    public Pane getPane(PriceRange range) {
+        this.range = range;
         BorderPane pane = new BorderPane();
         pane.setTop(topPane());
         pane.setCenter(createCentrePane());
@@ -139,7 +138,7 @@ public abstract class ChoiceScene extends SceneGenerator{
         Label sign1 = new Label("From: £");
         Label sign2 = new Label("To: £");
 
-        setTextSize(12, sign1,sign2, submit);
+        MainWindow.setTextSize(12, sign1,sign2, submit);
         pricePane.setAlignment(Pos.TOP_RIGHT);
 
         // set prompt text in text box
