@@ -60,7 +60,7 @@ public abstract class ChoicePane extends PaneGenerator{
     /**
      * update the price range label.
      */
-    private void setPriceDetails() {
+    public void setPriceDetails() {
         if(range == null) {
             priceDetails.setText("Please enter a price range");
         }

@@ -62,7 +62,7 @@ public class MapPane extends ChoicePane
      * @return the pane with the map in it.
      */
     public Pane createCentrePane() {
-
+        setPriceDetails();
         ScrollPane scrollPane = new ScrollPane();
         try {
             scrollPane.setContent(setRoot());

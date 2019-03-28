@@ -49,7 +49,9 @@ public class MainWindow extends Application {
     /**
      * construct a main window.
      */
-    public MainWindow(String[] args) {
+    public MainWindow(){}
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -100,7 +102,7 @@ public class MainWindow extends Application {
 
         //set the top and bottom bars, and leave the centre for each subclass to create.
         root.setTop(topBar());
-        createCenterPane();
+        setCenterPane(paneList[0].getPane(null));
         root.getCenter().setStyle("-fx-background-color: skyblue");
         root.setBottom(bottomBar());
         root.setStyle("-fx-background-color: red");
@@ -130,11 +132,6 @@ public class MainWindow extends Application {
         buttons.getChildren().addAll(backButton, nextButton);
 
         return buttons;
-    }
-
-    private void createCenterPane() {
-        Pane pane = paneList[currentPaneIndex].getPane(null);
-        root.setCenter(pane);
     }
 
     /**
@@ -176,7 +173,7 @@ public class MainWindow extends Application {
         if (paneList[currentPaneIndex + 1] != null && paneList[currentPaneIndex].nextConditionMet()) {
             int i = currentPaneIndex;
             PaneGenerator previousGenerator = paneList[i];
-            currentPaneIndex = i++;
+            currentPaneIndex++;
             setCenterPane(paneList[currentPaneIndex].getPane(previousGenerator.getRange()));
         }
     }
@@ -193,6 +190,10 @@ public class MainWindow extends Application {
         }
     }
 
+    /**
+     * set centre pane with a pane.
+     * @param pane
+     */
     private void setCenterPane(Pane pane) {
         root.setCenter(pane);
     }
@@ -223,7 +224,9 @@ public class MainWindow extends Application {
         return text;
     }
 
-
+    /**
+     * offer option to not to close.
+     */
     private void close() {
         boolean close = OptionsBox.createAlertBox("want to quit", "Do you really want to quit?");
         if (close) {

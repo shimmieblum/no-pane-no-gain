@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b2581a4-c470-42c4-9f3c-0d7348db90b1" name="Default Changelist" comment="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested.">
-      <change afterPath="$PROJECT_DIR$/directory/PaneGenerator.java" afterDir="false" />
+    <list default="true" id="6b2581a4-c470-42c4-9f3c-0d7348db90b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map.ctxt" beforeDir="false" afterPath="$PROJECT_DIR$/Map.ctxt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViewerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/AirbnbListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/AirbnbListing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/BookingScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/BookingPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/ChoiceScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/ChoicePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/Listings.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/Listings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directory/ChoicePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/ChoicePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directory/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/directory/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/MapScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/MapPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/SceneGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/StatPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/IndividualStatPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/StatsScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/StatsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/WelcomeScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/WelcomePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directory/map.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/directory/map.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directory/MapPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/MapPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directory/OptionsBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/directory/OptionsBox.java" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/no_pane_no_gain/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +35,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directory/ChoicePane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="309">
+              <caret line="171" column="44" lean-forward="true" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4565#4566#0" expanded="true" />
+                <element signature="e#4593#4594#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/directory/OptionsBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,28 +68,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/directory/StatsPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="46" column="40" lean-forward="true" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directory/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+            <state relative-caret-position="37">
+              <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
+              <folding>
+                <element signature="e#1412#1413#0" expanded="true" />
+                <element signature="e#1436#1437#0" expanded="true" />
+                <element signature="e#6158#6159#0" expanded="true" />
+                <element signature="e#6194#6195#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/directory/MapPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+              <folding>
+                <element signature="e#1156#1157#0" expanded="true" />
+                <element signature="e#1179#1180#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,43 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directory/PriceRange.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/directory/IndividualStatPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-              <folding>
-                <element signature="e#1908#1909#0" expanded="true" />
-                <element signature="e#1935#1936#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/directory/MapPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-              <folding>
-                <element signature="e#1156#1157#0" expanded="true" />
-                <element signature="e#1179#1180#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/directory/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="119">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -137,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/directory/WelcomePane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="96">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,6 +153,8 @@
       <find>backb</find>
       <find>paneGenerator</find>
       <find>sceneG</find>
+      <find>details</find>
+      <find>next</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/directory/Main.java" />
         <option value="$PROJECT_DIR$/directory/NewScene.java" />
         <option value="$PROJECT_DIR$/directory/MapSceneGenerator.java" />
         <option value="$PROJECT_DIR$/directory/ChallengeScene.java" />
@@ -201,7 +181,6 @@
         <option value="$USER_HOME$/Documents/GitHub/no-pane-no-gain/directory/WelcomeScene.java" />
         <option value="$USER_HOME$/Documents/GitHub/no-pane-no-gain/directory/MainWindow.java" />
         <option value="$PROJECT_DIR$/.git/COMMIT_EDITMSG" />
-        <option value="$PROJECT_DIR$/directory/OptionsBox.java" />
         <option value="$PROJECT_DIR$/directory/Map.java" />
         <option value="$PROJECT_DIR$/directory/StatsScene.java" />
         <option value="$PROJECT_DIR$/directory/WelcomeScene.java" />
@@ -217,13 +196,15 @@
         <option value="$PROJECT_DIR$/directory/Listings.java" />
         <option value="$PROJECT_DIR$/directory/AirbnbListing.java" />
         <option value="$PROJECT_DIR$/directory/PaneGenerator.java" />
-        <option value="$PROJECT_DIR$/directory/MainWindow.java" />
-        <option value="$PROJECT_DIR$/directory/WelcomePane.java" />
         <option value="$PROJECT_DIR$/directory/BookingPane.java" />
-        <option value="$PROJECT_DIR$/directory/ChoicePane.java" />
-        <option value="$PROJECT_DIR$/directory/MapPane.java" />
         <option value="$PROJECT_DIR$/directory/IndividualStatPane.java" />
         <option value="$PROJECT_DIR$/directory/StatsPane.java" />
+        <option value="$PROJECT_DIR$/directory/Main.java" />
+        <option value="$PROJECT_DIR$/directory/ChoicePane.java" />
+        <option value="$PROJECT_DIR$/directory/MapPane.java" />
+        <option value="$PROJECT_DIR$/directory/OptionsBox.java" />
+        <option value="$PROJECT_DIR$/directory/WelcomePane.java" />
+        <option value="$PROJECT_DIR$/directory/MainWindow.java" />
       </list>
     </option>
   </component>
@@ -270,7 +251,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553768472759" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553810135707" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -300,7 +281,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainWindow">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="no-pane-no-gain" />
@@ -347,8 +328,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.MapPane" />
         <item itemvalue="Application.Run" />
         <item itemvalue="Application.ScaleTransitionExample" />
@@ -376,7 +357,7 @@
       <workItem from="1553639239489" duration="5351000" />
       <workItem from="1553728959348" duration="8886000" />
       <workItem from="1553768137060" duration="472000" />
-      <workItem from="1553770851588" duration="318000" />
+      <workItem from="1553770851588" duration="3115000" />
     </task>
     <task id="LOCAL-00001" summary="refactored StatsScene to conform to the super class SceneGenerator.">
       <created>1553536116274</created>
@@ -420,11 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553761238671</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested.">
+      <created>1553771199064</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1553771199064</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43278000" />
+    <option name="totallyTimeSpent" value="46075000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,7 +424,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19676113" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -448,7 +436,7 @@
       <window_info id="Learn" order="7" weight="0.32955465" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.94671404" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.94671404" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6678508" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -456,7 +444,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3285968" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -517,6 +505,32 @@
     <MESSAGE value="going to embark on major refactor. this is a back up" />
     <MESSAGE value="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested." />
     <option name="LAST_COMMIT_MESSAGE" value="created superclass PaneGenerator to replace scene generator.&#10;&#10;updated the mechanism to change panes. now its all done by the MainWindow, using an Array. see the code.&#10;&#10;probably still needs commenting, we landed too soon!&#10;&#10;for some reason not commpiling, shows weird error message that a class (which exists) can't be found...&#10;&#10;so haven't tested." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/directory/WelcomePane.java</url>
+          <line>75</line>
+          <properties class="WelcomePane" method="nextConditionMet">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/directory/ChoicePane.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/directory/MainWindow.java</url>
+          <line>176</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/directory/Run.java" />
@@ -616,16 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/directory/OptionsBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/directory/map.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -682,20 +686,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/directory/ChoicePane.java">
+    <entry file="file://$PROJECT_DIR$/directory/IndividualStatPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        <state relative-caret-position="-202">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#1908#1909#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directory/StatsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directory/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directory/PriceRange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PATH_TO_FX$/javafx.graphics.jar!/javafx/scene/Node.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3781" selection-start-line="3781" selection-end-line="3781" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PATH_TO_FX$/javafx.controls.jar!/javafx/scene/control/Button.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PATH_TO_FX$/javafx.graphics.jar!/javafx/scene/Scene.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="4135" column="9" lean-forward="true" selection-start-line="4135" selection-start-column="9" selection-end-line="4135" selection-end-column="9" />
+          <folding>
+            <element signature="e#43556#43557#0" expanded="true" />
+            <element signature="e#43610#43611#0" expanded="true" />
+            <element signature="e#154342#154343#0" expanded="true" />
+            <element signature="e#154398#154399#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PATH_TO_FX$/javafx.base.jar!/javafx/event/Event.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directory/OptionsBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
+    <entry file="file://$PROJECT_DIR$/directory/MapPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="45">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding>
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1179#1180#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -706,35 +780,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/directory/PriceRange.java">
+    <entry file="file://$PROJECT_DIR$/directory/ChoicePane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/directory/MapPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        <state relative-caret-position="309">
+          <caret line="171" column="44" lean-forward="true" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
           <folding>
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1179#1180#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4565#4566#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/directory/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/directory/WelcomePane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="96">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -743,26 +804,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/directory/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/directory/StatsPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="46" column="40" lean-forward="true" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/directory/IndividualStatPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        <state relative-caret-position="37">
+          <caret line="175" column="28" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
           <folding>
-            <element signature="e#1908#1909#0" expanded="true" />
-            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1436#1437#0" expanded="true" />
+            <element signature="e#6158#6159#0" expanded="true" />
+            <element signature="e#6194#6195#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/directory/BookingPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
