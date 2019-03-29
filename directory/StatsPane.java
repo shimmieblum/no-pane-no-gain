@@ -32,7 +32,7 @@ public class StatsPane extends PaneGenerator {
         centerPane.setPadding(new Insets(20,20,20,20));
         centerPane.setVgap(4);
         centerPane.setHgap(4);
-        centerPane.setPrefWrapLength(600);
+        centerPane.setMaxWidth(500);
 
         centerPane.getChildren().addAll(createStatsPane(), createStatsPane(),createStatsPane(), createStatsPane());
         centerPane.setAlignment(Pos.CENTER);
