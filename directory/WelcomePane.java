@@ -1,5 +1,3 @@
-
-
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,7 +24,6 @@ public class WelcomePane extends ChoicePane {
         super();
     }
 
-
     /**
      * create the pane to go in the centre of the window.
      */
@@ -37,10 +34,8 @@ public class WelcomePane extends ChoicePane {
         ImageView view = new ImageView(new Image(getClass().getResourceAsStream("Untitled - Copy.png")));
 
         Button helpButton = new Button("Help");
-        Button gameButton = new Button("Game");
         Button animationButton = new Button("Animate");
 
-        gameButton.setPrefWidth(70);
         helpButton.setPrefWidth(70);
         animationButton.setPrefWidth(70);
 
@@ -54,7 +49,7 @@ public class WelcomePane extends ChoicePane {
         view.setFitHeight(250);
 
         HBox buttons = new HBox();
-        buttons.getChildren().addAll(helpButton, gameButton, animationButton);
+        buttons.getChildren().addAll(helpButton, animationButton);
         buttons.setSpacing(30);
         buttons.setAlignment(Pos.CENTER);
 
@@ -77,7 +72,4 @@ public class WelcomePane extends ChoicePane {
         }
         return true;
     }
-
-
-
 }
