@@ -152,8 +152,8 @@ public class MainWindow extends Application {
 
         // create Label with small print
         Label smallPrint = new Label();
-        smallPrint.setText("This programme is property of th the government of the United States of America." +
-                "\nAny attemps to reproduce or copy this will result in a full on investigation and will probably " +
+        smallPrint.setText("This programme is property of the the government of the United States of America." +
+                "\nAny attempts to reproduce or copy this will result in a full on investigation and will probably " +
                 "result in invasion." +
                 "\nFor more info please call 999, and ask for agent P.");
         smallPrint.setFont(new Font(6));
