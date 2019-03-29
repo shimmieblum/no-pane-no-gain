@@ -61,8 +61,6 @@ public class WelcomePane extends ChoicePane {
         pane.add(buttons, 0,0, 2,1);
         pane.add(view, 0,1,2,2);
 
-        pane.setGridLinesVisible(true);
-
         pane.setAlignment(Pos.CENTER);
         pane.setStyle("-fx-background-color: skyblue");
         return pane;
