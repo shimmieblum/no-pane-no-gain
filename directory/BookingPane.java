@@ -39,30 +39,30 @@ public class BookingPane extends PaneGenerator {
      */
     public Pane getPane(PriceRange range) {
         GridPane pane = new GridPane();
-        pane.setPadding(new Insets(20, 20, 20, 20));
-        pane.setVgap(5);
-        pane.setHgap(5);
+        pane.setPadding(new Insets(15, 15, 15, 15));
+        pane.setVgap(15);
+        pane.setHgap(15);
 
         Label propName = new Label("Property Name:");
         GridPane.setConstraints(propName, 0, 0);
         pane.getChildren().add(propName);
         TextField enterPropName = new TextField();
-        enterPropName.setPromptText("Please enter the name of your desired property.");
-        GridPane.setConstraints(propName, 1, 0);
-        pane.getChildren().add(propName);
+        enterPropName.setPromptText("Name of property.");
+        GridPane.setConstraints(enterPropName, 1, 0);
+        pane.getChildren().add(enterPropName);
 
         Label nights = new Label("Nights:");
         GridPane.setConstraints(nights, 0, 1);
         pane.getChildren().add(nights);
         TextField enterNights = new TextField();
-        enterNights.setPromptText("How many nights would you like to stay?");
+        enterNights.setPromptText("How many nights?");
         GridPane.setConstraints(enterNights, 1, 1);
         pane.getChildren().add(enterNights);
 
         Label totalPrice = new Label("Total:");
         GridPane.setConstraints(totalPrice, 0, 2);
         pane.getChildren().add(totalPrice);
-        Label grandTotal = new Label(Integer.toString(endPrice));
+        Label grandTotal = new Label("");
         GridPane.setConstraints(grandTotal, 1, 2);
         pane.getChildren().add(grandTotal);
 
@@ -80,34 +80,37 @@ public class BookingPane extends PaneGenerator {
         pane.getChildren().add(bookConfirmation);
 
         /*
-         * When the user clicks the BOOK button, generate the grand total price
+         * When the user clicks the Book button, generate the grand total price
          * and remove the property from available listings.
          * If text is not filled in properly, return an error statement.
+         * The user can also click Clear to clear all fields.
          */
-        for(int i = 0; i < listings.numberOfProperties(); i++) {
-            HashMap<String, Integer> propertyPrices = new HashMap<>();
-            propertyPrices.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
-            int enteredNights = Integer.parseInt(enterNights.getText());
 
-            book.setOnAction(e -> {
-                if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
-                        && enterNights.getText() != null && !enterNights.getText().isEmpty()
-                        && properties.keySet().contains(enterPropName.getText())) {
-                    endPrice = enteredNights*propertyPrices.get(enterPropName.getText());
-                    properties.remove(enterPropName.getText());
-                    bookConfirmation.setText("Thank you for booking!");
-                } else {
-                    bookConfirmation.setText("Please fill in all your details correctly.");
-                }
-            });
-
-            clear.setOnAction(e -> {
+        book.setOnAction(e -> {
+            if (!properties.keySet().contains(enterPropName.getText())) {
+                bookConfirmation.setText("That property does not exist! Please try again.");
+            }
+            else if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
+                    && enterNights.getText() != null && !enterNights.getText().isEmpty()
+                    && properties.keySet().contains(enterPropName.getText())) {
+                int enteredNights = Integer.parseInt(enterNights.getText());
+                endPrice = enteredNights*properties.get(enterPropName.getText());
+                grandTotal.setText(Integer.toString(endPrice));
+                properties.remove(enterPropName.getText());
+                bookConfirmation.setText("Thank you for booking!");
                 enterPropName.clear();
                 enterNights.clear();
-                grandTotal.setText(null);
-                bookConfirmation.setText(null);
-            });
-        }
+            } else {
+                bookConfirmation.setText("Please fill in all your details correctly.");
+            }
+        });
+
+        clear.setOnAction(e -> {
+            enterPropName.clear();
+            enterNights.clear();
+            grandTotal.setText(null);
+            bookConfirmation.setText(null);
+        });
 
         pane.setAlignment(Pos.CENTER);
 
