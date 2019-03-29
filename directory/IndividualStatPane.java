@@ -38,6 +38,7 @@ public class IndividualStatPane {
 
         title = new Label(pair.getKey());
         content = new Label(pair.getValue());
+        title.setWrapText(true);
         content.setWrapText(true);
 
         instantiateButtons();
