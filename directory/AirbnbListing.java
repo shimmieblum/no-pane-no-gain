@@ -144,8 +144,6 @@ public class AirbnbListing {
     public int getAvailability365() {
         return availability365;
     }
-    // for BookingPane class
-    public void setAvailability365(int n) { availability365 = n; }
 
     @Override
     public String toString() {
