@@ -1,7 +1,12 @@
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Pair;
 
 /**
@@ -16,14 +21,16 @@ public class IndividualStatPane {
 
     private Statistics stats;
     private BorderPane pane;
+
     private Label title;
     private Label content;
+
     private Button nextStat;
     private Button previousStat;
 
     public IndividualStatPane(Statistics s) {
         pane = new BorderPane();
-        pane.setPrefSize(250, 250);
+        pane.setPrefSize(200, 200);
         pane.setPadding(new Insets(20,20,20,20));
 
         stats = s;
@@ -31,12 +38,18 @@ public class IndividualStatPane {
 
         title = new Label(pair.getKey());
         content = new Label(pair.getValue());
+        content.setWrapText(true);
+
         instantiateButtons();
 
         pane.setTop(title);
         pane.setCenter(content);
         pane.setLeft(previousStat);
         pane.setRight(nextStat);
+        pane.setAlignment(pane.getTop(), Pos.CENTER);
+
+        pane.setStyle("-fx-border-color: white");
+        pane.setStyle("-fx-background-color: skyblue");
     }
 
     /*
@@ -47,7 +60,7 @@ public class IndividualStatPane {
         nextStat.setOnAction(e -> switchStatPane());
 
         previousStat = new Button("<");
-        previousStat.setOnAction(e -> switchStatPane());
+        previousStat.setOnAction(e -> this.switchStatPane());
     }
 
     /*
@@ -56,8 +69,8 @@ public class IndividualStatPane {
     private void switchStatPane() {
         Pair<String, String> pair = stats.nextStat(title.getText());
 
-        title  = new Label(pair.getKey());
-        content = new Label(pair.getValue().toString());
+        title.setText(pair.getKey());
+        content.setText(pair.getValue());
     }
 
     /*
