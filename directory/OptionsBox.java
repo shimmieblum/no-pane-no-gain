@@ -1,3 +1,4 @@
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,22 +8,31 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+ * This class creates an new window offering options. these are passed back as a boolean.
+ */
 public class OptionsBox {
 
     static boolean result;
+
+    /**
+     * create an option box
+     * @param title the title
+     * @param message the message of the box
+     * @return true if yes was chose, false if not.
+     */
     public static boolean createAlertBox(String title, String message) {
         Stage window = new Stage();
         window.setTitle(title);
         window.initModality(Modality.APPLICATION_MODAL);
 
         Label messageLabel = new Label(message);
-        Button yesButton = new Button("yes");
-        Button noButton = new Button("no");
+        Button yesButton = new Button("Yes");
+        Button noButton = new Button("No");
         yesButton.setOnAction(e -> {
             result = true;
             window.close();}
-        );
+            );
         noButton.setOnAction(e -> {
             result = false;
             window.close();

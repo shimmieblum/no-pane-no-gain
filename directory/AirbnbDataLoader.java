@@ -1,11 +1,12 @@
 import com.opencsv.CSVReader;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import javafx.collections.*;
+
 
 public class AirbnbDataLoader {
  
@@ -37,7 +38,7 @@ public class AirbnbDataLoader {
                 double reviewsPerMonth = convertDouble(line[12]);
                 int calculatedHostListingsCount = convertInt(line[13]);
                 int availability365 = convertInt(line[14]);
-
+ 
                 AirbnbListing listing = new AirbnbListing(id, name, host_id,
                         host_name, neighbourhood, latitude, longitude, room_type,
                         price, minimumNights, numberOfReviews, lastReview,
@@ -52,7 +53,84 @@ public class AirbnbDataLoader {
         System.out.println("Success! Number of loaded records: " + listings.size());
         return listings;
     }
-
+    
+    /**
+     * Return an array list of all air bnb listings for one specific london borough.
+     */
+    public ObservableList<AirbnbListing> loadSpecific(String borough)
+    {
+        ArrayList<AirbnbListing> listings = load();
+        ObservableList<AirbnbListing> listingsSpecific = FXCollections.observableArrayList();;
+        int i = 0;
+        //int count = 0;
+        while (i < listings.size()) {
+            if (listings.get(i).getNeighbourhood().replaceAll(" ", "").toLowerCase().equals(borough.toLowerCase())) {
+                listingsSpecific.add(listings.get(i));
+                i++;
+                // count++;
+            }
+            else {
+                i++;
+            }
+        }
+        // System.out.println(borough);
+        // System.out.println(count);
+        return listingsSpecific;
+    }
+    
+    /**
+     * Return an array list of all air bnb listings for one specific london borough
+     * but only those within a defined price range
+     */
+    public ObservableList<AirbnbListing> loadSpecific(String borough, int priceFrom, int priceTo)
+    {
+        ArrayList<AirbnbListing> listings = load();
+        ObservableList<AirbnbListing> listingsSpecific = FXCollections.observableArrayList();;
+        int i = 0;
+        //int count = 0;
+        while (i < listings.size()) {
+            if (listings.get(i).getNeighbourhood().replaceAll(" ", "").toLowerCase().equals(borough.toLowerCase())
+                && listings.get(i).getPrice() >= priceFrom
+                && listings.get(i).getPrice() <= priceTo) {
+                listingsSpecific.add(listings.get(i));
+                i++;
+                // count++;
+            }
+            else {
+                i++;
+            }
+        }
+        // System.out.println(borough);
+        // System.out.println(count);
+        return listingsSpecific;
+    }
+    
+    /**
+     * Return the number of properties in a specific london borough.
+     */
+    public int loadNumberOfProperties(String borough)
+    //not sure if i ended up using this method
+    {
+        ArrayList<AirbnbListing> listings = load();
+        ArrayList<AirbnbListing> listingsSpecific = new ArrayList<AirbnbListing>();
+        int i = 0;
+        int count = 0;
+        while (i < listings.size()) {
+            if (listings.get(i).getNeighbourhood().replaceAll(" ", "").toLowerCase().equals(borough.toLowerCase())) {
+                listingsSpecific.add(listings.get(i));
+                System.out.println(listings.get(i).getNeighbourhood());
+                count = count + 1;
+                i++;
+            }
+            else {
+                i++;
+            }
+        }
+        System.out.println(count);
+        return count;
+        
+    }
+    
     /**
      *
      * @param doubleString the string to be converted to Double type

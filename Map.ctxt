@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=MapPane
+comment0.text=\r\n\ A\ class\ to\ display\ a\ map\ of\ london\ boroughs,\ each\ borough\ can\ be\ clicked\r\n\ on\ to\ launch\ a\ second\ scene\ which\ displays\ a\ table\ containing\ information\r\n\ about\ that\ boroughs\ airbnb\ listings.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=stage
+comment1.target=void\ start(javafx.stage.Stage)
+comment1.text=\r\n\ The\ loading\ of\ the\ map\ scene\ from\ fxml\ document\r\n
+comment2.params=e
+comment2.target=void\ Click(javafx.event.ActionEvent)
+comment2.text=\r\n\ The\ action\ to\ be\ taken\ when\ one\ of\ the\ buttons\ that\ indicate\ a\ borough\ is\r\n\ clicked.\r\n
+comment3.params=listings
+comment3.target=void\ launchTableViewer(javafx.collections.ObservableList)
+comment3.text=\r\n\ launches\ a\ new\ window\ that\ contains\ a\ table\ view\ that\ holds\ all\ of\ the\ selected\r\n\ boroughs\ available\ airbnb\ properties.\r\n
+comment4.params=tableView
+comment4.target=void\ tableSelect(javafx.scene.control.TableView)
+comment4.text=\r\n\ method\ to\ determine\ first\ whether\ a\ row\ has\ been\ selected\ in\ the\ table\r\n\ and\ if\ so\ display\ the\ description\ (name)\ of\ the\ property\ in\ a\ new\ window.\r\n
+comment5.params=selectedListing
+comment5.target=void\ launchPropertyDescription(javafx.collections.ObservableList)
+comment5.text=\r\n\ method\ to\ launch\ a\ new\ window\ containing\ a\ brief\ description\ of\ the\ selected\r\n\ property\r\n
+comment6.params=e
+comment6.target=void\ filterClick(javafx.event.ActionEvent)
+comment6.text=\r\n\ method\ to\ indicate\ that\ the\ list\ of\ airbnb\ properties\ should\ be\ filtered\r\n
+numComments=7

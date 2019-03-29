@@ -9,7 +9,7 @@ import java.util.Dictionary;
 
 /**
  * The class computing all the calculations and storing them in the stats HashMap by name and figure.
- * This class is used in StatPane and StatsScene.
+ * This class is used in IndividualStatPane and StatsPane.
  * It consists of all the statistics in "stats" and then stores the keys of those displayed or undisplayed statistics
  * in lists.
  *
@@ -58,6 +58,7 @@ public class Statistics {
         }
         avgNumberReviews = totalReviews/listings.numberOfProperties();
         avgReviews = Integer.toString(avgNumberReviews);
+
         stats.put("Average Reviews Per Property", avgReviews);
     }
 
@@ -77,6 +78,7 @@ public class Statistics {
             }
         }
         homeApts = Integer.toString(totalHomeApartments);
+
         stats.put("Number of Entire Homes and Apartments", homeApts);
     }
 
@@ -88,7 +90,7 @@ public class Statistics {
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
            String borough = listings.getProperty(i).getNeighbourhood();
-           int price = listings.getProperty(i).getPrice();
+           int price = listings.getProperty(i).getPrice()*listings.getProperty(i).getMinimumNights();
            if(boroughTotal.containsKey(borough)) price += boroughTotal.get(borough);
            boroughTotal.put(borough, price);
         }
@@ -108,10 +110,9 @@ public class Statistics {
         HashMap<String, Integer> boroughTotal = new HashMap<>();
         Pair<String, Integer> leastExp = new Pair<>("", 1000000);
 
-
         for (int i = 0; i < listings.numberOfProperties(); i++) {
             String borough = listings.getProperty(i).getNeighbourhood();
-            int price = listings.getProperty(i).getPrice();
+            int price = listings.getProperty(i).getPrice()*listings.getProperty(i).getMinimumNights();
             if(boroughTotal.containsKey(borough)) price += boroughTotal.get(borough);
             boroughTotal.put(borough, price);
         }
@@ -126,26 +127,25 @@ public class Statistics {
     }
 
     // adds the String of the name of host with the most reviews to the stats HashMap
-    // calculatedHostListingsCount in AirbnbListing returns the total number of listings the host holds across AirBnB
     public void mostReviewedHost() {
-        int totalReviews = 0;
-        int greatestNumberOfReviews = 0;
-        String mostReviewedProperty = "";
-        Dictionary propHosts = new Hashtable();
-        Dictionary propertiesReviews = new Hashtable();
+        String mostReviewedHost = "";
+        HashMap<String, Integer> hostsReviews = new HashMap<>();
+        Pair<String, Integer> mostRev = new Pair<>("", 0);
 
         for (int i = 0; i < listings.numberOfProperties(); i++) {
-            propHosts.put(listings.getProperty(i).getName(), listings.getProperty(i).getHost_name());
-            if (listings.getProperty(i).getHost_name().equals(propHosts.get(listings.getProperty(i).getName()))) {
-                totalReviews += listings.getProperty(i).getNumberOfReviews();
-                propertiesReviews.put(totalReviews, listings.getProperty(i).getHost_name());
-            }
-            if (totalReviews > greatestNumberOfReviews) {
-                greatestNumberOfReviews = totalReviews;
-                mostReviewedProperty = propertiesReviews.get(greatestNumberOfReviews).toString();
-            }
+            String host = listings.getProperty(i).getHost_name();
+            int numReviews = listings.getProperty(i).getNumberOfReviews();
+            if (hostsReviews.containsKey(host)) numReviews += hostsReviews.get(host);
+            hostsReviews.put(host, numReviews);
         }
-        stats.put("Most Reviewed Host", mostReviewedProperty);
+
+        for (String host : hostsReviews.keySet()) {
+            int numReviews = hostsReviews.get(host);
+            if(numReviews > mostRev.getValue()) mostRev = new Pair<>(host, hostsReviews.get(host));
+        }
+        mostReviewedHost = mostRev.getKey();
+
+        stats.put("Most Reviewed Host", mostReviewedHost);
 
     }
 
