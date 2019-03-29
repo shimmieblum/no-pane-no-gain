@@ -31,8 +31,12 @@ public class Statistics {
     public Statistics(Listings l) {
         listings = l;
         stats = new HashMap<>();
+
+        usedStats = new ArrayList<>();
+        unusedStats = new ArrayList<>();
         createStats();
         createStatGroups();
+
     }
 
     private void createStats() {
@@ -191,7 +195,7 @@ public class Statistics {
      */
     private void createStatGroups() {
         usedStats = new ArrayList<>();
-        unusedStats = new ArrayList(stats.keySet());
+        unusedStats = new ArrayList<>(stats.keySet());
 
     }
 
@@ -203,7 +207,8 @@ public class Statistics {
     public Pair<String, String> nextStat(String currentStat) {
         Pair<String, String> pair;
 
-        if(currentStat != null) unusedStats.add(currentStat); //inserts the current statistic into back of unused list
+        if(currentStat == null) createStatGroups(); //reinitialise the lists if null (first time of StatsPane creation)
+        else unusedStats.add(currentStat); //inserts the current statistic into back of unused list
 
         String next = unusedStats.get(0); //gets the first unused stat
         unusedStats.remove(next);
