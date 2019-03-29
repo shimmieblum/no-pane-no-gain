@@ -17,8 +17,6 @@ import java.util.HashMap;
 public class BookingPane extends PaneGenerator {
     // the properties
     private Listings listings;
-    // arrayList of loaded properties
-    private AirbnbDataLoader loader;
     // the root of the Scene
     private BorderPane root;
     // variable for total price of booked property
@@ -68,9 +66,13 @@ public class BookingPane extends PaneGenerator {
         GridPane.setConstraints(grandTotal, 1, 2);
         pane.getChildren().add(grandTotal);
 
-        Button book = new Button("BOOK");
+        Button book = new Button("Book");
         GridPane.setConstraints(book, 0,3);
         pane.getChildren().add(book);
+
+        Button clear = new Button("Clear");
+        GridPane.setConstraints(clear, 1, 3);
+        pane.getChildren().add(clear);
 
         final Label bookConfirmation = new Label();
         GridPane.setConstraints(bookConfirmation, 0, 4);
@@ -86,11 +88,6 @@ public class BookingPane extends PaneGenerator {
             HashMap<String, Integer> propertyPrices = new HashMap<>();
             propertyPrices.put(listings.getProperty(i).getName(), listings.getProperty(i).getPrice());
             int enteredNights = Integer.parseInt(enterNights.getText());
-            //int currentListingIndex = 0;
-
-            //if (enterPropName.getText().equals(listings.getProperty(i).getName())) {
-                //currentListingIndex = i;
-            //}
 
             book.setOnAction(e -> {
                 if (enterPropName.getText() != null && !enterPropName.getText().isEmpty()
@@ -98,11 +95,17 @@ public class BookingPane extends PaneGenerator {
                         && properties.keySet().contains(enterPropName.getText())) {
                     endPrice = enteredNights*propertyPrices.get(enterPropName.getText());
                     properties.remove(enterPropName.getText());
-                    //listings.deleteListing(currentListingIndex);
                     bookConfirmation.setText("Thank you for booking!");
                 } else {
                     bookConfirmation.setText("Please fill in all your details correctly.");
                 }
+            });
+
+            clear.setOnAction(e -> {
+                enterPropName.clear();
+                enterNights.clear();
+                grandTotal.setText(null);
+                bookConfirmation.setText(null);
             });
         }
 
