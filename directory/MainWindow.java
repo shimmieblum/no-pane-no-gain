@@ -87,7 +87,8 @@ public class MainWindow extends Application {
     private void fillPaneList() {
         paneList[0] = new WelcomePane();
         paneList[1] = new MapPane();
-        paneList[2] = new BookingPane(listings);
+        paneList[2] = new StatsPane(listings);
+        paneList[3] = new BookingPane(listings);
     }
 
     /**
