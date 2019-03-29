@@ -8,10 +8,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+ * This class creates an new window offering options. these are passed back as a boolean.
+ */
 public class OptionsBox {
 
     static boolean result;
+
+    /**
+     * create an option box
+     * @param title the title
+     * @param message the message of the box
+     * @return true if yes was chose, false if not.
+     */
     public static boolean createAlertBox(String title, String message) {
         Stage window = new Stage();
         window.setTitle(title);

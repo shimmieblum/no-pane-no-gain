@@ -12,12 +12,18 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
+/**
+ * a class to animate a node with one of two animations, chosen at random
+ */
 public class Animate {
     Node node;
     double scaleX;
     double scaleY;
 
-
+    /**
+     * create an animate by passing in the node to be animated
+     * @param node the node
+     */
     public Animate(Node node) {
         this.node = node;
         scaleX = node.getScaleX();
@@ -25,6 +31,9 @@ public class Animate {
         animate();
     }
 
+    /**
+     * choose an animation aat random annd animate the node.
+     */
     public void animate() {
         Random random = new Random();
         int i = random.nextInt(2);
@@ -38,6 +47,9 @@ public class Animate {
         }
     }
 
+    /**
+     * perform a scale transition animation on the node
+     */
     private void scaleTransition() {
 
         ScaleTransition scaleTransition = new ScaleTransition();
@@ -58,6 +70,9 @@ public class Animate {
         stopBox(scaleTransition);
     }
 
+    /**
+     * perform a rotation
+     */
     private void rotateTransition() {
 
 
